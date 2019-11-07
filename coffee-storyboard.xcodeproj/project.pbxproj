@@ -14,7 +14,21 @@
 		538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */; };
 		538C118123740B9F0033F209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538C118023740B9F0033F209 /* Assets.xcassets */; };
 		538C118423740B9F0033F209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 538C118223740B9F0033F209 /* LaunchScreen.storyboard */; };
+		538C1190237416D80033F209 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538C118F237416D80033F209 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		538C118E237416210033F209 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		538C117123740B9D0033F209 /* coffee-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coffee-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +40,7 @@
 		538C118023740B9F0033F209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		538C118323740B9F0033F209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		538C118523740B9F0033F209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		538C118F237416D80033F209 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +57,7 @@
 		538C116823740B9C0033F209 = {
 			isa = PBXGroup;
 			children = (
+				538C118F237416D80033F209 /* Default-568h@2x.png */,
 				538C117323740B9D0033F209 /* coffee-storyboard */,
 				538C117223740B9D0033F209 /* Products */,
 			);
@@ -58,16 +74,24 @@
 		538C117323740B9D0033F209 /* coffee-storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				538C117423740B9D0033F209 /* AppDelegate.swift */,
-				538C117623740B9D0033F209 /* SceneDelegate.swift */,
 				538C117823740B9D0033F209 /* ViewController.swift */,
 				538C117A23740B9D0033F209 /* Main.storyboard */,
 				538C118023740B9F0033F209 /* Assets.xcassets */,
-				538C118223740B9F0033F209 /* LaunchScreen.storyboard */,
+				538C118B23740D610033F209 /* Supporting Files */,
 				538C118523740B9F0033F209 /* Info.plist */,
 				538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */,
 			);
 			path = "coffee-storyboard";
+			sourceTree = "<group>";
+		};
+		538C118B23740D610033F209 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				538C117423740B9D0033F209 /* AppDelegate.swift */,
+				538C117623740B9D0033F209 /* SceneDelegate.swift */,
+				538C118223740B9F0033F209 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +104,7 @@
 				538C116D23740B9D0033F209 /* Sources */,
 				538C116E23740B9D0033F209 /* Frameworks */,
 				538C116F23740B9D0033F209 /* Resources */,
+				538C118E237416210033F209 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				538C118423740B9F0033F209 /* LaunchScreen.storyboard in Resources */,
+				538C1190237416D80033F209 /* Default-568h@2x.png in Resources */,
 				538C118123740B9F0033F209 /* Assets.xcassets in Resources */,
 				538C117C23740B9D0033F209 /* Main.storyboard in Resources */,
 			);
@@ -291,10 +317,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5B2U8Z6S6K;
 				INFOPLIST_FILE = "coffee-storyboard/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "piendop.coffee-storyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -309,10 +338,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5B2U8Z6S6K;
 				INFOPLIST_FILE = "coffee-storyboard/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "piendop.coffee-storyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
