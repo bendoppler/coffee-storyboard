@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CC266567E828B8DCDFE8228 /* Pods_coffee_storyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */; };
+		5305895C2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */; };
+		5305895E2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */; };
 		538C117523740B9D0033F209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117423740B9D0033F209 /* AppDelegate.swift */; };
 		538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117623740B9D0033F209 /* SceneDelegate.swift */; };
 		538C117923740B9D0033F209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117823740B9D0033F209 /* ViewController.swift */; };
@@ -14,7 +17,6 @@
 		538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */; };
 		538C118123740B9F0033F209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538C118023740B9F0033F209 /* Assets.xcassets */; };
 		538C118423740B9F0033F209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 538C118223740B9F0033F209 /* LaunchScreen.storyboard */; };
-		538C1190237416D80033F209 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 538C118F237416D80033F209 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig"; sourceTree = "<group>"; };
 		538C117123740B9D0033F209 /* coffee-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coffee-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		538C117423740B9D0033F209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		538C117623740B9D0033F209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +44,7 @@
 		538C118023740B9F0033F209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		538C118323740B9F0033F209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		538C118523740B9F0033F209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		538C118F237416D80033F209 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coffee_storyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,18 +52,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC266567E828B8DCDFE8228 /* Pods_coffee_storyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DD83341DA44D8C982E49E31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */,
+				5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3F7CE08920BB1D368DB69FAD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		538C116823740B9C0033F209 = {
 			isa = PBXGroup;
 			children = (
-				538C118F237416D80033F209 /* Default-568h@2x.png */,
 				538C117323740B9D0033F209 /* coffee-storyboard */,
 				538C117223740B9D0033F209 /* Products */,
+				0DD83341DA44D8C982E49E31 /* Pods */,
+				3F7CE08920BB1D368DB69FAD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +124,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 538C118823740B9F0033F209 /* Build configuration list for PBXNativeTarget "coffee-storyboard" */;
 			buildPhases = (
+				5B8AAF77EEC9DC74BC2299C0 /* [CP] Check Pods Manifest.lock */,
 				538C116D23740B9D0033F209 /* Sources */,
 				538C116E23740B9D0033F209 /* Frameworks */,
 				538C116F23740B9D0033F209 /* Resources */,
 				538C118E237416210033F209 /* Embed Frameworks */,
+				8EBC26FF8A36855C5E3E6C93 /* [CP] Embed Pods Frameworks */,
+				22562C0CDA1550D07F476847 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -153,14 +179,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5305895E2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig in Resources */,
 				538C118423740B9F0033F209 /* LaunchScreen.storyboard in Resources */,
-				538C1190237416D80033F209 /* Default-568h@2x.png in Resources */,
 				538C118123740B9F0033F209 /* Assets.xcassets in Resources */,
+				5305895C2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig in Resources */,
 				538C117C23740B9D0033F209 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22562C0CDA1550D07F476847 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B8AAF77EEC9DC74BC2299C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-coffee-storyboard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EBC26FF8A36855C5E3E6C93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		538C116D23740B9D0033F209 /* Sources */ = {
@@ -246,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -300,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -312,6 +398,7 @@
 		};
 		538C118923740B9F0033F209 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -322,8 +409,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "piendop.coffee-storyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -333,6 +422,7 @@
 		};
 		538C118A23740B9F0033F209 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -343,8 +433,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
-				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "piendop.coffee-storyboard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
