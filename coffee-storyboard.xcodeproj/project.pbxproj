@@ -12,7 +12,7 @@
 		5305895E2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */; };
 		538C117523740B9D0033F209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117423740B9D0033F209 /* AppDelegate.swift */; };
 		538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117623740B9D0033F209 /* SceneDelegate.swift */; };
-		538C117923740B9D0033F209 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117823740B9D0033F209 /* ViewController.swift */; };
+		538C117923740B9D0033F209 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117823740B9D0033F209 /* LoginViewController.swift */; };
 		538C117C23740B9D0033F209 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 538C117A23740B9D0033F209 /* Main.storyboard */; };
 		538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */; };
 		538C118123740B9F0033F209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538C118023740B9F0033F209 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 		538C117123740B9D0033F209 /* coffee-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coffee-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		538C117423740B9D0033F209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		538C117623740B9D0033F209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		538C117823740B9D0033F209 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		538C117823740B9D0033F209 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		538C117B23740B9D0033F209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		538C117E23740B9D0033F209 /* coffee_storyboard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coffee_storyboard.xcdatamodel; sourceTree = "<group>"; };
 		538C118023740B9F0033F209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		538C117323740B9D0033F209 /* coffee-storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				538C117823740B9D0033F209 /* ViewController.swift */,
+				538C117823740B9D0033F209 /* LoginViewController.swift */,
 				538C117A23740B9D0033F209 /* Main.storyboard */,
 				538C118023740B9F0033F209 /* Assets.xcassets */,
 				538C118B23740D610033F209 /* Supporting Files */,
@@ -253,7 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				538C117923740B9D0033F209 /* ViewController.swift in Sources */,
+				538C117923740B9D0033F209 /* LoginViewController.swift in Sources */,
 				538C117523740B9D0033F209 /* AppDelegate.swift in Sources */,
 				538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */,
 				538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */,
