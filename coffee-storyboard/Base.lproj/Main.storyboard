@@ -15,9 +15,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="LfC-nR-C9Z">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LfC-nR-C9Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ae5-Cg-arx"/>
+                            <constraint firstItem="LfC-nR-C9Z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Qgd-4p-hBc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="spinner" destination="LfC-nR-C9Z" id="Wav-Tu-nQn"/>
+                        <segue destination="2DQ-od-arf" kind="show" identifier="Show Intro" id="Fa1-6w-Enb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,15 +42,29 @@
             <objects>
                 <viewController storyboardIdentifier="IntroMVC" id="2DQ-od-arf" customClass="IntroViewController" customModule="coffee_storyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vFd-NA-YPx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G6F-04-cMH">
+                                <rect key="frame" x="183" y="406" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="signOut:" destination="2DQ-od-arf" eventType="touchUpInside" id="m4W-Gb-hxJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="G6F-04-cMH" firstAttribute="centerX" secondItem="vFd-NA-YPx" secondAttribute="centerX" id="nGn-Kh-Tam"/>
+                            <constraint firstItem="G6F-04-cMH" firstAttribute="centerY" secondItem="vFd-NA-YPx" secondAttribute="centerY" id="uBd-Fy-C5b"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="csL-d9-LcS"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UdT-6e-ya7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPd-74-Ems" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="138"/>
+            <point key="canvasLocation" x="1192.753623188406" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

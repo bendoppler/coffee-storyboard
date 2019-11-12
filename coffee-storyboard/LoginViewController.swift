@@ -14,37 +14,58 @@ import FacebookCore
 
 class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     let buttonRatio: CGFloat = 5/24
-    var fbSigninButton: FBLoginButton!
-    var ggSiginButton: GIDSignInButton!
+    var fbSigninButton: FBLoginButton? {
+        didSet {
+            spinner.stopAnimating()
+        }
+    }
+    var ggSiginButton: GIDSignInButton? {
+        didSet {
+            spinner.stopAnimating()
+        }
+    }
     var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.delegate = self
-        //create two sigin buttons
-        let buttonWidth: CGFloat = view.bounds.width * 3 / 4
-        let buttonHeight: CGFloat = buttonWidth*buttonRatio
-        let magicNumber: CGFloat = view.bounds.height * 0.02232142857
-        // Do any additional setup after loading the view.
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        let fbPosition = CGPoint(x: view.center.x-buttonWidth/2+3, y: view.center.y - buttonHeight + magicNumber - 8)
-        let ggPosition = CGPoint(x: view.center.x-buttonWidth/2, y: view.center.y)
-        self.fbSigninButton = FBLoginButton(frame: CGRect(origin: fbPosition, size: CGSize(width: buttonWidth-5, height: buttonHeight-magicNumber)), permissions: [.publicProfile, .email])
-        self.ggSiginButton = GIDSignInButton(frame: CGRect(origin: ggPosition, size: CGSize(width: buttonWidth, height: buttonHeight)))
-        let fbLayoutConstraints = self.fbSigninButton.constraints
-        for lc in fbLayoutConstraints {
-            if (lc.constant == 28) {
-                lc.isActive = false
-                break;
-            }
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        if AccessToken.current != nil || GIDSignIn.sharedInstance()?.hasPreviousSignIn() == true {
+            spinner.startAnimating()
+            performSegue(withIdentifier: "Show Intro", sender: self)
+            spinner.stopAnimating()
         }
-        self.fbSigninButton.delegate = self
-        view.addSubview(self.fbSigninButton)
-        view.addSubview(self.ggSiginButton)
+        else {
+            //create two sigin buttons
+            let buttonWidth: CGFloat = view.bounds.width * 3 / 4
+            let buttonHeight: CGFloat = buttonWidth*buttonRatio
+            let magicNumber: CGFloat = view.bounds.height * 0.02232142857
+            // Do any additional setup after loading the view.
+            GIDSignIn.sharedInstance()?.presentingViewController = self
+            let fbPosition = CGPoint(x: view.center.x-buttonWidth/2+3, y: view.center.y - buttonHeight + magicNumber - 8)
+            let ggPosition = CGPoint(x: view.center.x-buttonWidth/2, y: view.center.y)
+            self.fbSigninButton = FBLoginButton(frame: CGRect(origin: fbPosition, size: CGSize(width: buttonWidth-5, height: buttonHeight-magicNumber)), permissions: [.publicProfile, .email])
+            self.ggSiginButton = GIDSignInButton(frame: CGRect(origin: ggPosition, size: CGSize(width: buttonWidth, height: buttonHeight)))
+            let fbLayoutConstraints = self.fbSigninButton!.constraints
+            for lc in fbLayoutConstraints {
+                if (lc.constant == 28) {
+                    lc.isActive = false
+                    break;
+                }
+            }
+            self.fbSigninButton!.delegate = self
+            fbSigninButton?.isHidden = false
+            ggSiginButton?.isHidden = false
+            spinner.stopAnimating()
+            view.addSubview(self.fbSigninButton!)
+            view.addSubview(self.ggSiginButton!)
+        }
     }
-    
     //MARK: Facebook sigin
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        spinner.startAnimating()
+        fbSigninButton!.isHidden = true
+        ggSiginButton!.isHidden = true
         if let error = error {
             if(error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 print("The user has not signed in before or they have since signed out")
@@ -68,18 +89,23 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         try? User.saveUserInfo(userId: result["id"] ?? accessToken.userID, familyName: result["first_name"] ?? "", name: result["last_name"] ?? "", birthday: nil, phoneNumber: nil, email: result["email"] ?? "", in: context)
                         try? context.save()
                     }
-                    self?.peformSegueToIntroScreen()
+                    self?.performSegue(withIdentifier: "Show Intro", sender: self)
                 }
             }
         }
     }
-    
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         // Perform any operations when the user disconnects from app here.
+        spinner.stopAnimating()
+        ggSiginButton?.isHidden = false
+        fbSigninButton?.isHidden = false
     }
     
     //MARK: Google sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        spinner.startAnimating()
+        fbSigninButton?.isHidden = true
+        ggSiginButton?.isHidden = true
         if let error = error {
             if(error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 print("The user has not signed in before or they have since signed out")
@@ -92,17 +118,19 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             try? User.saveUserInfo(userId: user.userID, familyName: user.profile.familyName, name: user.profile.name, birthday: nil, phoneNumber: nil, email: user.profile.email, in: context)
             try? context.save()
         }
-        peformSegueToIntroScreen()
+        performSegue(withIdentifier: "Show Intro", sender: self)
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
     }
-
-    private func peformSegueToIntroScreen() {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let introVC = storyBoard.instantiateViewController(withIdentifier: "IntroMVC")
-        self.present(introVC, animated: true, completion: nil)
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        spinner.stopAnimating()
+        fbSigninButton?.isHidden = false
+        ggSiginButton?.isHidden = false
     }
+    
 }
 
