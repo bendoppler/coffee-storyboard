@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bCI-T6-4Kt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pjs-vy-Xff">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -45,21 +45,69 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="Z30-CM-qG7">
             <objects>
-                <viewController id="pjs-vy-Xff" sceneMemberID="viewController">
+                <viewController id="pjs-vy-Xff" customClass="HomeViewController" customModule="coffee_storyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4WF-q3-CFp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 4" translatesAutoresizingMaskIntoConstraints="NO" id="Jv4-ay-WHp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="187.00000000000003"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Piendop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ1-a2-EUD">
+                                <rect key="frame" x="20.000000000000004" y="15" width="59.333333333333343" height="19"/>
+                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fl7-ky-3lO">
+                                <rect key="frame" x="81" y="61" width="103.66666666666669" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVC-y6-J3f">
+                                        <rect key="frame" x="0.0" y="0.0" width="42.666666666666664" height="19"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank - xx điểm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6k-sh-ow9">
+                                        <rect key="frame" x="0.0" y="27" width="103.66666666666667" height="19"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 2" translatesAutoresizingMaskIntoConstraints="NO" id="LZv-uy-g4D">
+                                <rect key="frame" x="20" y="44" width="53" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="epv-sy-rvM"/>
+                                    <constraint firstAttribute="width" constant="53" id="ygt-Y5-dBW"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wZ1-a2-EUD" firstAttribute="leading" secondItem="6Jl-iZ-suI" secondAttribute="leading" constant="20" id="3kO-aK-vMC"/>
+                            <constraint firstItem="6Jl-iZ-suI" firstAttribute="trailing" secondItem="Fl7-ky-3lO" secondAttribute="trailing" constant="229.33333333333331" id="EQV-t6-io5"/>
+                            <constraint firstItem="Jv4-ay-WHp" firstAttribute="top" secondItem="4WF-q3-CFp" secondAttribute="top" id="RmL-2I-uZn"/>
+                            <constraint firstItem="Jv4-ay-WHp" firstAttribute="leading" secondItem="4WF-q3-CFp" secondAttribute="leading" id="UbS-tQ-Fdd"/>
+                            <constraint firstItem="LZv-uy-g4D" firstAttribute="leading" secondItem="6Jl-iZ-suI" secondAttribute="leading" constant="20" id="bX6-gt-LP8"/>
+                            <constraint firstItem="Fl7-ky-3lO" firstAttribute="leading" secondItem="LZv-uy-g4D" secondAttribute="trailing" constant="8" id="gGc-uP-Rn6"/>
+                            <constraint firstItem="Jv4-ay-WHp" firstAttribute="trailing" secondItem="4WF-q3-CFp" secondAttribute="trailing" id="h06-GV-CgX"/>
+                            <constraint firstItem="Fl7-ky-3lO" firstAttribute="top" secondItem="6Jl-iZ-suI" secondAttribute="top" constant="17" id="h3b-Mh-aML"/>
+                            <constraint firstItem="LZv-uy-g4D" firstAttribute="top" secondItem="wZ1-a2-EUD" secondAttribute="bottom" constant="10" id="lrh-qY-Ube"/>
+                            <constraint firstItem="LZv-uy-g4D" firstAttribute="top" secondItem="6Jl-iZ-suI" secondAttribute="top" id="qZo-Ql-Qw6"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wZ1-a2-EUD" secondAttribute="trailing" constant="20" symbolic="YES" id="wYx-8z-4Qm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Jl-iZ-suI"/>
                     </view>
                     <navigationItem key="navigationItem" id="vHY-2c-y7y"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJG-WU-mbH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="988.39285714285711"/>
+            <point key="canvasLocation" x="908.69565217391312" y="827.67857142857144"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="bew-1g-xvw">
@@ -353,7 +401,6 @@
                         <outlet property="topSpaceMaskImage" destination="jxF-dK-Z8f" id="McR-Zv-S9S"/>
                         <outlet property="topSpaceRectImage" destination="GtH-Pu-4O0" id="qej-4B-lj6"/>
                         <outlet property="welcomeLabel" destination="Bar-xN-umc" id="x7N-0p-7Os"/>
-                        <segue destination="bCI-T6-4Kt" kind="presentation" identifier="Show Home" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="K23-cx-Pxo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCn-lK-10L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -370,35 +417,15 @@
             </objects>
             <point key="canvasLocation" x="2781" y="138"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="siE-am-gRP">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="bCI-T6-4Kt" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="o15-37-IVp">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.73549724684394313" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FPN-9S-6WU">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="pjs-vy-Xff" kind="relationship" relationship="rootViewController" id="h6c-xb-KWv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EXd-Vk-jTk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="988.39285714285711"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Ellipse" width="24" height="24"/>
+        <image name="Ellipse 2" width="36" height="36"/>
         <image name="Ellipse-1" width="10" height="10"/>
         <image name="Ellipse-2" width="10" height="10"/>
         <image name="Mask Group" width="297" height="456"/>
         <image name="Rectangle 2.2" width="95" height="405"/>
+        <image name="Rectangle 4" width="375" height="187"/>
         <image name="Rectangle-big" width="297" height="481"/>
     </resources>
 </document>
