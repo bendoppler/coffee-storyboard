@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1CC266567E828B8DCDFE8228 /* Pods_coffee_storyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */; };
-		5305895C2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */; };
-		5305895E2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */; };
 		53190027237578E900C7C69F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53190026237578E900C7C69F /* User.swift */; };
+		531EAEDC237E88BE009025E4 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */; };
+		537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537AAECD2385235700183CF7 /* HomeViewController.swift */; };
 		538C117523740B9D0033F209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117423740B9D0033F209 /* AppDelegate.swift */; };
 		538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117623740B9D0033F209 /* SceneDelegate.swift */; };
 		538C117923740B9D0033F209 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117823740B9D0033F209 /* LoginViewController.swift */; };
@@ -38,6 +38,8 @@
 		5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig"; sourceTree = "<group>"; };
 		53190026237578E900C7C69F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		537AAECD2385235700183CF7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		538C117123740B9D0033F209 /* coffee-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coffee-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		538C117423740B9D0033F209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		538C117623740B9D0033F209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +85,6 @@
 		53190023237578A300C7C69F /* Persistents */ = {
 			isa = PBXGroup;
 			children = (
-				538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */,
 				53190026237578E900C7C69F /* User.swift */,
 			);
 			path = Persistents;
@@ -96,9 +97,34 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		531EAEDA237E8889009025E4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		537AAECB23851CEA00183CF7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				538C117823740B9D0033F209 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		537AAECC23851CF800183CF7 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				5390BD61237AB7CC0013C5DA /* IntroViewController.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
 		538C116823740B9C0033F209 = {
 			isa = PBXGroup;
 			children = (
+				531EAEDA237E8889009025E4 /* Fonts */,
 				538C117323740B9D0033F209 /* coffee-storyboard */,
 				538C117223740B9D0033F209 /* Products */,
 				0DD83341DA44D8C982E49E31 /* Pods */,
@@ -117,11 +143,13 @@
 		538C117323740B9D0033F209 /* coffee-storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */,
 				531900282375794700C7C69F /* Models */,
 				53190023237578A300C7C69F /* Persistents */,
-				538C117823740B9D0033F209 /* LoginViewController.swift */,
-				5390BD61237AB7CC0013C5DA /* IntroViewController.swift */,
+				537AAECB23851CEA00183CF7 /* Login */,
+				537AAECC23851CF800183CF7 /* Intro */,
 				538C117A23740B9D0033F209 /* Main.storyboard */,
+				537AAECD2385235700183CF7 /* HomeViewController.swift */,
 				538C118023740B9F0033F209 /* Assets.xcassets */,
 				538C117423740B9D0033F209 /* AppDelegate.swift */,
 				538C118B23740D610033F209 /* Supporting Files */,
@@ -201,10 +229,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5305895E2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig in Resources */,
 				538C118423740B9F0033F209 /* LaunchScreen.storyboard in Resources */,
 				538C118123740B9F0033F209 /* Assets.xcassets in Resources */,
-				5305895C2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig in Resources */,
+				531EAEDC237E88BE009025E4 /* Roboto-Regular.ttf in Resources */,
 				538C117C23740B9D0033F209 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +307,7 @@
 				538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */,
 				5390BD62237AB7CC0013C5DA /* IntroViewController.swift in Sources */,
 				53190027237578E900C7C69F /* User.swift in Sources */,
+				537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */,
 				538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
