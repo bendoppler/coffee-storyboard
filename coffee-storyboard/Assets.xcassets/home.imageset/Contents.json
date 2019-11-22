@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Trở thành thành viên cao cấp cùng với chương trình tích điểm của YAMA.png",
+      "filename" : "home.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "home-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "home-2.png",
       "scale" : "3x"
     }
   ],
