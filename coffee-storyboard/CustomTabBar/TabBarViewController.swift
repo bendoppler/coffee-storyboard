@@ -20,6 +20,16 @@ class TabBarViewController: UITabBarController {
         self.loadTabBar()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let shadowPath = UIBezierPath(rect: customTabBar.bounds)
+        customTabBar.layer.masksToBounds = false
+        customTabBar.layer.shadowColor = UIColor.black.cgColor
+        customTabBar.layer.shadowOffset = CGSize(width: 0, height: -0.5)
+        customTabBar.layer.shadowOpacity = 0.4
+        customTabBar.layer.shadowPath = shadowPath.cgPath
+    }
+    
     private func loadTabBar() {
         let tabItems: [TabItem] = [.home, .order, .pien, .user]
         
