@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FFx-v7-6qw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -394,16 +394,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7dW-t6-eL6">
-                                <rect key="frame" x="127" y="806" width="160" height="48"/>
+                                <rect key="frame" x="163" y="830" width="88" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="2Yk-VG-LUd">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q28-sY-O9b">
-                                        <rect key="frame" x="56" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="32" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-2" translatesAutoresizingMaskIntoConstraints="NO" id="Jk5-K0-4Sc">
-                                        <rect key="frame" x="112" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="64" y="7" width="24" height="10"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -598,16 +598,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="diB-x3-8sJ">
-                                <rect key="frame" x="127" y="806" width="160" height="48"/>
+                                <rect key="frame" x="163" y="830" width="88" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-2" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-ob-s8v">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="0.0" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-1" translatesAutoresizingMaskIntoConstraints="NO" id="SMT-4G-RuA">
-                                        <rect key="frame" x="56" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="32" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="y3r-e9-r9v">
-                                        <rect key="frame" x="112" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="64" y="0.0" width="24" height="24"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -647,6 +647,7 @@
                         <outlet property="topSpaceMaskImage" destination="jxF-dK-Z8f" id="McR-Zv-S9S"/>
                         <outlet property="topSpaceRectImage" destination="GtH-Pu-4O0" id="qej-4B-lj6"/>
                         <outlet property="welcomeLabel" destination="Bar-xN-umc" id="x7N-0p-7Os"/>
+                        <segue destination="FFx-v7-6qw" kind="presentation" identifier="Show Home" modalPresentationStyle="overFullScreen" id="SfT-TZ-eOm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCn-lK-10L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -668,6 +669,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="FFx-v7-6qw" customClass="TabBarViewController" customModule="coffee_storyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="PBO-j3-SFN"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JwM-12-YIe">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

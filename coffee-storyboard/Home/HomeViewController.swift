@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate{
     
@@ -63,9 +64,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         scrollViewTopSpacing.constant = screenHeight * 53.67/896
         collectionViewBottomSpacing.constant = screenHeight * 400.33/896
         newsLabelTopSpacing.constant = screenHeight * 34/896
-        
+        if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = getUserInfo(userId: userId) {
+            if let name = userInfo.name {
+                let userName = name
+                let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto", size: screenHeight*16/896)!]
+                let boldString = NSMutableAttributedString(string: userName, attributes: attributes)
+                userNameLabel.attributedText = boldString
+            }
+        }
     }
     
+    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private func getUserInfo(userId: String) -> User? {
+        if let context = container?.viewContext {
+            return try? User.retrieveUserInfo(userId: userId, in: context)
+        }
+        return nil
+    }
     
     //MARK: Collection View for coupon and news
     
@@ -140,7 +155,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewWillLayoutSubviews()
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height * 3/4)
         scrollViewHeight.constant = self.view.frame.height * 2/3
-        
     }
     
 }

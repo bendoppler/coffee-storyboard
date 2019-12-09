@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if  AccessToken.current != nil || GIDSignIn.sharedInstance()?.hasPreviousSignIn() != true {
+        if  AccessToken.current != nil || GIDSignIn.sharedInstance()?.hasPreviousSignIn() == true {
             performSegueToIntroScreen()
         }
     }
@@ -100,6 +100,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                         try? User.saveUserInfo(userId: result["id"] ?? accessToken.userID, familyName: result["first_name"] ?? "", name: result["last_name"] ?? "", birthday: nil, phoneNumber: nil, email: result["email"] ?? "", in: context)
                         try? context.save()
                     }
+                    UserDefaults.standard.removeObject(forKey: "userID")
                     UserDefaults.standard.set(result["id"], forKey: "userID")
                     self?.performSegueToIntroScreen()
                 }
@@ -119,9 +120,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         if let error = error {
             if(error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
                 print("The user has not signed in before or they have since signed out")
-                spinner.stopAnimating()
-                fbSigninButton?.isHidden = false
-                ggSiginButton?.isHidden = false
             } else {
                 print("\(error.localizedDescription)")
             }
