@@ -40,14 +40,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var scrollViewTopSpacing: NSLayoutConstraint!
     @IBOutlet weak var collectionViewBottomSpacing: NSLayoutConstraint!
     @IBOutlet weak var newsLabelTopSpacing: NSLayoutConstraint!
+    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     override func viewDidLoad() {
         super.viewDidLoad()
         let screenHeight = self.view.bounds.height
         mainBarHeight.constant = screenHeight*0.1227678751
         couponBarView.addRightBorder(with: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0), andWidth: 1.0)
         orderBarView.addRightBorder(with: UIColor(red: 214/255, green: 214/255, blue: 214/255, alpha: 1.0), andWidth: 1.0)
-        couponBarView.roundCorners([.topLeft, .bottomLeft] , radius: 5.0)
-        bonusPointBarView.roundCorners([.topRight, .bottomRight], radius: 5.0)
+        couponBarView.roundCorners([.topLeft, .bottomLeft] , radius: 5.0, color: UIColor.white)
+        bonusPointBarView.roundCorners([.topRight, .bottomRight], radius: 5.0, color: UIColor.white)
         couponLabel.font = couponLabel.font.withSize(screenHeight * 16/896)
         orderLabel.font = orderLabel.font.withSize(screenHeight * 16/896)
         bonusPointLabel.font = bonusPointLabel.font.withSize(screenHeight * 16/896)
@@ -64,7 +65,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         scrollViewTopSpacing.constant = screenHeight * 53.67/896
         collectionViewBottomSpacing.constant = screenHeight * 400.33/896
         newsLabelTopSpacing.constant = screenHeight * 34/896
-        if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = getUserInfo(userId: userId) {
+        if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
             if let name = userInfo.name {
                 let userName = name
                 let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto", size: screenHeight*16/896)!]
@@ -72,14 +73,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 userNameLabel.attributedText = boldString
             }
         }
-    }
-    
-    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-    private func getUserInfo(userId: String) -> User? {
-        if let context = container?.viewContext {
-            return try? User.retrieveUserInfo(userId: userId, in: context)
-        }
-        return nil
     }
     
     //MARK: Collection View for coupon and news
@@ -160,10 +153,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 extension UIView {
-    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat, color: UIColor) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners,cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
+        mask.lineWidth = 3.0
+        mask.strokeColor = color.cgColor
         self.layer.mask = mask
     }
 }
