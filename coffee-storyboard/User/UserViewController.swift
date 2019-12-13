@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserViewController: UIViewController {
     
     //MARK: Layout subviews in multiple screen sizes
     @IBOutlet weak var editProfileLabel: UILabel!
@@ -26,6 +26,9 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var memberPointLabel: UILabel!
     var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     @IBOutlet weak var memberInfoLeadingSpacing: NSLayoutConstraint!
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var accountInfoView: UIView!
+    @IBOutlet weak var notificationView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let height = self.view.bounds.height
@@ -42,74 +45,32 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         nextButtonView.roundCorners([.topRight, .bottomRight], radius: 5.0, color: UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0))
         nextButtonView.layer.borderColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0).cgColor
         profileImageTopSpacing.constant = height * 69/896
-        profileImageLeadingSpacing.constant = height * 25/896
+        profileImageLeadingSpacing.constant = height * 50/896
         profileInfoTopSpacing.constant = height * 81/896
-        profileImageLeadingSpacing.constant = height * 8/896
+        profileImageLeadingSpacing.constant = height * 50/896
         userNameLabel.font = userNameLabel.font.withSize(height*16/896)
         phoneNumberLabel.font = phoneNumberLabel.font.withSize(height*12/896)
         editProfileLabel.font = editProfileLabel.font.withSize(height*12/896)
         memberTypeLabel.font = memberTypeLabel.font.withSize(height*16/896)
         memberPointLabel.font = memberPointLabel.font.withSize(height*16/896)
         memberInfoLeadingSpacing.constant = height * 20/896
+        notificationSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        accountInfoView.roundCorners([.topLeft,.topRight, .bottomLeft, .bottomRight], radius: 5.0, color: UIColor.white)
+        notificationView.roundCorners([.topLeft,.topRight, .bottomLeft, .bottomRight], radius: 5.0, color: UIColor.white)
     }
     
-    //MARK: Table view
-    @IBOutlet weak var userTableView: UITableView! {
-        didSet {
-            userTableView.delegate = self
-            userTableView.dataSource = self
-        }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch(section) {
-        case 0:
-            return "Thông tin tài khoản"
-        case 1:
-            return "Quản lý thông báo"
-        default:
-            return ""
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let header = view as? UITableViewHeaderFooterView, let text = header.textLabel?.text {
-            let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto", size: self.view.bounds.height*16/896)!]
-            let boldString = NSMutableAttributedString(string: text, attributes: attributes)
-            header.textLabel?.attributedText = boldString
-        }
-    }
-    private let infos = [(UIImage(named: "location_icon"), "Quản lý địa chỉ nhận hàng"), (UIImage(named: "location_icon"), "Quản lý địa chỉ nhận hàng"), (UIImage(named: "location_icon"), "Quản lý địa chỉ nhận hàng")]
-    private let notificationString = "Nhận thông báo từ chúng tôi"
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return infos.count
-        } else {
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath)
-            if let notificationCell = cell as? NotificationTableViewCell {
-                let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto", size: self.view.bounds.height*16/896)!]
-                notificationCell.notificationLabel.attributedText = NSAttributedString(string: notificationString, attributes: attributes)
-            }
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "AccountInfoCell", for: indexPath)
-            if let accountInfoCell = cell as? AccountInfoTableViewCell {
-                let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto", size: self.view.bounds.height*16/896)!]
-                accountInfoCell.infoLabel.attributedText = NSAttributedString(string: infos[indexPath.item].1, attributes: attributes)
-                accountInfoCell.iconImageView.image = infos[indexPath.item].0
-            }
-            return cell
-        }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        var shadowPath = UIBezierPath(rect: accountInfoView.bounds)
+        accountInfoView.layer.masksToBounds = false
+        accountInfoView.layer.shadowColor = UIColor.lightGray.cgColor
+        accountInfoView.layer.shadowOpacity = 0.4
+        accountInfoView.layer.shadowPath = shadowPath.cgPath
+        shadowPath = UIBezierPath(rect: notificationView.bounds)
+        notificationView.layer.masksToBounds = false
+        notificationView.layer.shadowColor = UIColor.lightGray.cgColor
+        notificationView.layer.shadowOpacity = 0.4
+        notificationView.layer.shadowPath = shadowPath.cgPath
     }
 }
 

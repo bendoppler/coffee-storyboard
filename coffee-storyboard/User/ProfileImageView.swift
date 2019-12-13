@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class ProfileImageView: UIView {
 
     override func draw(_ rect: CGRect) {
