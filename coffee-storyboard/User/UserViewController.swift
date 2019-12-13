@@ -72,6 +72,32 @@ class UserViewController: UIViewController {
         notificationView.layer.shadowOpacity = 0.4
         notificationView.layer.shadowPath = shadowPath.cgPath
     }
+    
+    
+    //MARK: Go to member benefits screen
+    @IBAction func showMemberBenefitScreen(_ sender: UITapGestureRecognizer) {
+        if sender.state == UITapGestureRecognizer.State.ended {
+            performSegue(withIdentifier: "Show Benefit", sender: sender)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Benefit" {
+            if let memberBenefitVC = segue.destination as? MemberBenefitViewController {
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
+                memberBenefitVC.title = "Quyền lợi thành viên"
+            }
+        }
+    }
 }
 
 

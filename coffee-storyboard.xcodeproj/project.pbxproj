@@ -29,6 +29,8 @@
 		5390BD62237AB7CC0013C5DA /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5390BD61237AB7CC0013C5DA /* IntroViewController.swift */; };
 		53AA07D923A127B100403210 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AA07D823A127B100403210 /* ProfileImageView.swift */; };
 		53AA07DB23A14D4D00403210 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AA07DA23A14D4D00403210 /* Utilities.swift */; };
+		53C1F80C23A3C30E00591D58 /* MemberBenefitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C1F80B23A3C30E00591D58 /* MemberBenefitViewController.swift */; };
+		53C1F80E23A3D0A500591D58 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C1F80D23A3D0A500591D58 /* Roboto-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +72,8 @@
 		5390BD61237AB7CC0013C5DA /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		53AA07D823A127B100403210 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		53AA07DA23A14D4D00403210 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		53C1F80B23A3C30E00591D58 /* MemberBenefitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBenefitViewController.swift; sourceTree = "<group>"; };
+		53C1F80D23A3D0A500591D58 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coffee_storyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,6 +144,7 @@
 		531EAEDA237E8889009025E4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				53C1F80D23A3D0A500591D58 /* Roboto-Bold.ttf */,
 				531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
@@ -158,6 +163,7 @@
 			children = (
 				533319B9238FF2BF009A2EED /* UserViewController.swift */,
 				53AA07D823A127B100403210 /* ProfileImageView.swift */,
+				53C1F80B23A3C30E00591D58 /* MemberBenefitViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			files = (
 				538C118423740B9F0033F209 /* LaunchScreen.storyboard in Resources */,
 				538C118123740B9F0033F209 /* Assets.xcassets in Resources */,
+				53C1F80E23A3D0A500591D58 /* Roboto-Bold.ttf in Resources */,
 				531EAEDC237E88BE009025E4 /* Roboto-Regular.ttf in Resources */,
 				538C117C23740B9D0033F209 /* Main.storyboard in Resources */,
 			);
@@ -374,6 +381,7 @@
 			files = (
 				53AA07D923A127B100403210 /* ProfileImageView.swift in Sources */,
 				538C117923740B9D0033F209 /* LoginViewController.swift in Sources */,
+				53C1F80C23A3C30E00591D58 /* MemberBenefitViewController.swift in Sources */,
 				533319BA238FF2BF009A2EED /* UserViewController.swift in Sources */,
 				533319BE238FF60D009A2EED /* TabBarViewController.swift in Sources */,
 				538C117523740B9D0033F209 /* AppDelegate.swift in Sources */,

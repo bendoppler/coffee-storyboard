@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
             if let name = userInfo.name {
                 let userName = name
-                let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto", size: screenHeight*16/896)!]
+                let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto-Bold", size: screenHeight*16/896)!]
                 let boldString = NSMutableAttributedString(string: userName, attributes: attributes)
                 userNameLabel.attributedText = boldString
             }
