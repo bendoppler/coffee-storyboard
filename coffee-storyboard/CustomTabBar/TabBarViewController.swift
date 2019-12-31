@@ -12,6 +12,7 @@ class TabBarViewController: UITabBarController {
     var customTabBar: TabBarMenu!
     var tabBarHeight: CGFloat = 75.0
     var screenHeight: CGFloat = 0.0
+    fileprivate let stateController = StateController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,16 @@ class TabBarViewController: UITabBarController {
         
         self.setupCustomTabMenu(for: tabItems) { (controllers) in
             self.viewControllers = controllers
+        }
+        for vc in self.viewControllers! {
+            if vc.contents is HomeViewController {
+                let homeVC = vc.contents as! HomeViewController
+                homeVC.stateController = stateController
+            }
+            if vc.contents is UserViewController {
+                let userVC = vc.contents as! UserViewController
+                userVC.stateController = stateController
+            }
         }
         self.selectedIndex = 0
     }
@@ -71,5 +82,14 @@ class TabBarViewController: UITabBarController {
     
     func changeTab(of index: Int) {
         self.selectedIndex = index
+    }
+}
+extension UIViewController {
+    var contents: UIViewController {
+        if let navcon = self as? UINavigationController {
+            return navcon.visibleViewController ?? navcon
+        } else {
+            return self
+        }
     }
 }

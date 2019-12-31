@@ -65,12 +65,34 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         scrollViewTopSpacing.constant = screenHeight * 53.67/896
         collectionViewBottomSpacing.constant = screenHeight * 400.33/896
         newsLabelTopSpacing.constant = screenHeight * 34/896
+    }
+    
+    //MARK: Passing data between tab views
+    var stateController: StateController?
+    override func viewDidAppear(_ animated: Bool) {
+        let screenHeight = self.view.bounds.height
+        super.viewDidAppear(animated)
         if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
             if let name = userInfo.name {
+                stateController?.user.name = name
                 let userName = name
                 let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto-Bold", size: screenHeight*16/896)!]
                 let boldString = NSMutableAttributedString(string: userName, attributes: attributes)
                 userNameLabel.attributedText = boldString
+            }
+            if let familyName = userInfo.family_name {
+                stateController?.user.familyName = familyName
+            }
+            if let birthday = userInfo.birthday {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd-MM-yyyy"
+                stateController?.user.birthday = formatter.string(from: birthday)
+            }
+            if userInfo.phone_number > 0 {
+                stateController?.user.phoneNumber = String(userInfo.phone_number)
+            }
+            if let email = userInfo.email {
+                stateController?.user.email = email
             }
         }
     }

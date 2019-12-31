@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 enum TabItem: String, CaseIterable {
     case home = "home"
     case order = "đặt hàng"
@@ -25,7 +24,9 @@ enum TabItem: String, CaseIterable {
         case .pien:
             return PienViewController()
         case .user:
-            return UserViewController()
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let userVC = storyBoard.instantiateViewController(withIdentifier: "UserMVC")
+            return userVC
         }
     }
     
