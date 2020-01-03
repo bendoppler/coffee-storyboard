@@ -59,22 +59,10 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, UIScrol
         scrollView.scrollRectToVisible(rc, animated: true)
     }
     
+    lazy var handler: [UITextField: UITextField] = [nameTextField: familyNameTextField, familyNameTextField: birthdayTextField, birthdayTextField: phoneNumberTextField, phoneNumberTextField: emailTextField]
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == nameTextField {
-            textField.resignFirstResponder()
-            familyNameTextField.becomeFirstResponder()
-        } else if textField == familyNameTextField {
-            textField.resignFirstResponder()
-            birthdayTextField.becomeFirstResponder()
-        } else if textField == birthdayTextField {
-            textField.resignFirstResponder()
-            phoneNumberTextField.becomeFirstResponder()
-        } else if textField == phoneNumberTextField {
-            textField.resignFirstResponder()
-            emailTextField.becomeFirstResponder()
-        } else if textField == emailTextField {
-            textField.resignFirstResponder()
-        }
+        textField.resignFirstResponder()
+        handler[textField]?.becomeFirstResponder()
         return true
     }
 }
