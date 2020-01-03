@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CC266567E828B8DCDFE8228 /* Pods_coffee_storyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */; };
+		530A53A723BC7F7500974296 /* EditUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A53A623BC7F7500974296 /* EditUserInfoViewController.swift */; };
 		5312A7FF23BB375E003DA9EC /* MemberBenefitInfoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5312A7FE23BB375E003DA9EC /* MemberBenefitInfoItemView.swift */; };
 		5312A80123BB5554003DA9EC /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5312A80023BB5554003DA9EC /* StateController.swift */; };
 		53133BBA239D46BA00C3025A /* CouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53133BB9239D46BA00C3025A /* CouponCollectionViewCell.swift */; };
@@ -51,6 +52,7 @@
 /* Begin PBXFileReference section */
 		5305895B2374292800BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		5305895D2374293100BC54D8 /* Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Target Support Files/Pods-coffee-storyboard/Pods-coffee-storyboard.release.xcconfig"; sourceTree = "<group>"; };
+		530A53A623BC7F7500974296 /* EditUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInfoViewController.swift; sourceTree = "<group>"; };
 		5312A7FE23BB375E003DA9EC /* MemberBenefitInfoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBenefitInfoItemView.swift; sourceTree = "<group>"; };
 		5312A80023BB5554003DA9EC /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		53133BB9239D46BA00C3025A /* CouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				53AA07D823A127B100403210 /* ProfileImageView.swift */,
 				53C1F80B23A3C30E00591D58 /* MemberBenefitViewController.swift */,
 				5312A7FE23BB375E003DA9EC /* MemberBenefitInfoItemView.swift */,
+				530A53A623BC7F7500974296 /* EditUserInfoViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				533319C0238FF79F009A2EED /* TabBarMenu.swift in Sources */,
 				5312A80123BB5554003DA9EC /* StateController.swift in Sources */,
 				538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */,
+				530A53A723BC7F7500974296 /* EditUserInfoViewController.swift in Sources */,
 				5390BD62237AB7CC0013C5DA /* IntroViewController.swift in Sources */,
 				53190027237578E900C7C69F /* User.swift in Sources */,
 				53AA07DB23A14D4D00403210 /* Utilities.swift in Sources */,

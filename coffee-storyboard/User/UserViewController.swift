@@ -77,9 +77,19 @@ class UserViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func showUserInfoScreen(_ sender: UITapGestureRecognizer) {
+        if sender.state == UITapGestureRecognizer.State.ended {
+            performSegue(withIdentifier: "Show Info", sender: sender)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        if let tabBarVC = tabBarController as? TabBarViewController {
+            tabBarVC.customTabBar.isHidden = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,8 +99,19 @@ class UserViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Benefit" {
             if let memberBenefitVC = segue.destination as? MemberBenefitViewController {
-                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
+                if let tabBarVC = tabBarController as? TabBarViewController {
+                    tabBarVC.customTabBar.isHidden = true
+                }
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
                 memberBenefitVC.title = "Quyền lợi thành viên"
+            }
+        } else if segue.identifier == "Show Info" {
+            if let userInfoVC = segue.destination as? EditUserInfoViewController {
+                if let tabBarVC = tabBarController as? TabBarViewController {
+                    tabBarVC.customTabBar.isHidden = true
+                }
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
+                userInfoVC.title = "Chỉnh sửa thông tin cá nhân"
             }
         }
     }
