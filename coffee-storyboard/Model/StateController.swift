@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct UserModel {
     var name: String
@@ -14,15 +15,26 @@ struct UserModel {
     var birthday: String
     var phoneNumber: String
     var email: String
-    init(name: String? = nil, familyName: String? = nil, birthday: String? = nil, phoneNumber: String? = nil, email: String? = nil) {
+    var image: UIImage?
+    init(name: String? = nil, familyName: String? = nil, birthday: String? = nil, phoneNumber: String? = nil, email: String? = nil, image: UIImage? = nil) {
         self.name = name ?? ""
         self.familyName = familyName ?? ""
         self.birthday = birthday ?? ""
         self.phoneNumber = phoneNumber ?? ""
         self.email = email ?? ""
+        self.image = image ?? nil
     }
 }
 
 class StateController {
     var user: UserModel = UserModel()
+    
+    func update(userInfo: UserModel) {
+        user.name = userInfo.name
+        user.familyName = userInfo.familyName
+        user.birthday = userInfo.birthday
+        user.phoneNumber = userInfo.phoneNumber
+        user.email = userInfo.email
+        user.image = userInfo.image
+    }
 }

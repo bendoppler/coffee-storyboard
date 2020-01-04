@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var couponBarView: UIView!
     @IBOutlet weak var couponLabel: UILabel!
     @IBOutlet weak var couponImageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var orderBarView: UIView!
     @IBOutlet weak var orderLabel: UILabel!
@@ -69,15 +70,24 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     //MARK: Passing data between tab views
     var stateController: StateController?
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let screenHeight = self.view.bounds.height
-        super.viewDidAppear(animated)
-        if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
+        if let name = stateController?.user.name, name != "" {
+            let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto-Bold", size: screenHeight*16/896)!]
+            let boldString = NSAttributedString(string: name, attributes: attributes)
+            userNameLabel.attributedText = boldString
+            if let image = stateController?.user.image {
+                profileImageView.image = image
+                profileImageView.makeRounded(borderWidth: 0, color: UIColor.black.cgColor)
+            }
+        }
+        else if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
             if let name = userInfo.name {
                 stateController?.user.name = name
                 let userName = name
                 let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto-Bold", size: screenHeight*16/896)!]
-                let boldString = NSMutableAttributedString(string: userName, attributes: attributes)
+                let boldString = NSAttributedString(string: userName, attributes: attributes)
                 userNameLabel.attributedText = boldString
             }
             if let familyName = userInfo.family_name {
@@ -95,6 +105,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 stateController?.user.email = email
             }
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     //MARK: Collection View for coupon and news

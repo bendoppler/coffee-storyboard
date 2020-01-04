@@ -17,6 +17,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var nextButtonView: UIView!
     @IBOutlet weak var profileImageTopSpacing: NSLayoutConstraint!
     @IBOutlet weak var profileImageLeadingSpacing: NSLayoutConstraint!
+    @IBOutlet weak var profileImageView: ProfileImageView!
     
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var profileInfoTopSpacing: NSLayoutConstraint!
@@ -49,14 +50,6 @@ class UserViewController: UIViewController {
         profileImageLeadingSpacing.constant = height * 50/896
         profileInfoTopSpacing.constant = height * 81/896
         profileImageLeadingSpacing.constant = height * 50/896
-        let userName = stateController?.user.name
-        userNameLabel.setAttributedFont("Roboto-Bold", height*16/896, userName ?? "")
-        
-        if let phoneNumber = stateController?.user.phoneNumber, phoneNumber != "" {
-            phoneNumberLabel.setAttributedFont("Roboto", height*12/896, phoneNumber)
-        } else {
-            phoneNumberLabel.setAttributedFont("Roboto", height*12/896, "+84 123 456 789")
-        }
         editProfileLabel.setAttributedFont("Roboto", height*12/896, editProfileLabel.text ?? "Chỉnh sửa")
         memberTypeLabel.setAttributedFont("Roboto-Bold", height*16/896, memberTypeLabel.text ?? "Thành viên vàng")
         memberPointLabel.setAttributedFont("Roboto-Bold", height*16/896, memberPointLabel.text ?? "120 điểm")
@@ -70,14 +63,12 @@ class UserViewController: UIViewController {
     }
     
     
-    //MARK: Go to member benefits screen
+    //MARK: Go to other screens
     @IBAction func showMemberBenefitScreen(_ sender: UITapGestureRecognizer) {
         if sender.state == UITapGestureRecognizer.State.ended {
             performSegue(withIdentifier: "Show Benefit", sender: sender)
         }
     }
-    
-    
     @IBAction func showUserInfoScreen(_ sender: UITapGestureRecognizer) {
         if sender.state == UITapGestureRecognizer.State.ended {
             performSegue(withIdentifier: "Show Info", sender: sender)
@@ -86,16 +77,37 @@ class UserViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let height = self.view.bounds.height
         navigationController?.setNavigationBarHidden(true, animated: animated)
         if let tabBarVC = tabBarController as? TabBarViewController {
             tabBarVC.customTabBar.isHidden = false
         }
+        if let image = stateController?.user.image {
+            DispatchQueue.main.async { [weak self] in
+                let imageView = UIImageView(image: image)
+                if let frame = self?.profileImageView.bounds {
+                    imageView.frame = frame
+                    imageView.makeRounded(borderWidth: 5, color: UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 231/255).cgColor)
+                    self?.profileImageView.addSubview(imageView)
+                    self?.profileImageView.bringSubviewToFront(imageView)
+                }
+            }
+        }
+        if let phoneNumber = stateController?.user.phoneNumber, phoneNumber != "" {
+            phoneNumberLabel.setAttributedFont("Roboto", height*12/896, phoneNumber)
+        } else {
+            phoneNumberLabel.setAttributedFont("Roboto", height*12/896, "")
+        }
+        let userName = stateController?.user.name
+        userNameLabel.setAttributedFont("Roboto-Bold", height*16/896, userName ?? "")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Benefit" {
             if let memberBenefitVC = segue.destination as? MemberBenefitViewController {
@@ -110,6 +122,8 @@ class UserViewController: UIViewController {
                 if let tabBarVC = tabBarController as? TabBarViewController {
                     tabBarVC.customTabBar.isHidden = true
                 }
+                userInfoVC.userInfo = stateController?.user
+                userInfoVC.delegate = self
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
                 userInfoVC.title = "Chỉnh sửa thông tin cá nhân"
             }
@@ -118,6 +132,15 @@ class UserViewController: UIViewController {
     
     //MARK: Passing data between tab views
     var stateController: StateController?
+    
+    
+}
+
+//MARK: Pass databack by delegate
+extension UserViewController: EditUserInfoViewControllerDelegate {
+    func update(_ userInfo: UserModel) {
+        stateController?.update(userInfo: userInfo)
+    }
 }
 
 extension UIView {

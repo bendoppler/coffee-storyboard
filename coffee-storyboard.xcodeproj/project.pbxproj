@@ -34,6 +34,7 @@
 		53AA07DB23A14D4D00403210 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AA07DA23A14D4D00403210 /* Utilities.swift */; };
 		53C1F80C23A3C30E00591D58 /* MemberBenefitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C1F80B23A3C30E00591D58 /* MemberBenefitViewController.swift */; };
 		53C1F80E23A3D0A500591D58 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53C1F80D23A3D0A500591D58 /* Roboto-Bold.ttf */; };
+		53F4995823C0459A00A8479E /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F4995723C0459A00A8479E /* CameraHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,7 @@
 		53AA07DA23A14D4D00403210 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		53C1F80B23A3C30E00591D58 /* MemberBenefitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberBenefitViewController.swift; sourceTree = "<group>"; };
 		53C1F80D23A3D0A500591D58 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		53F4995723C0459A00A8479E /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		89ACE478E9E095328904E736 /* Pods_coffee_storyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coffee_storyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 				538C118523740B9F0033F209 /* Info.plist */,
 				538C118B23740D610033F209 /* Supporting Files */,
 				53AA07DA23A14D4D00403210 /* Utilities.swift */,
+				53F4995723C0459A00A8479E /* CameraHandler.swift */,
 			);
 			path = "coffee-storyboard";
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				5390BD62237AB7CC0013C5DA /* IntroViewController.swift in Sources */,
 				53190027237578E900C7C69F /* User.swift in Sources */,
 				53AA07DB23A14D4D00403210 /* Utilities.swift in Sources */,
+				53F4995823C0459A00A8479E /* CameraHandler.swift in Sources */,
 				537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */,
 				533319C3238FF9EE009A2EED /* PienViewController.swift in Sources */,
 				538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */,
