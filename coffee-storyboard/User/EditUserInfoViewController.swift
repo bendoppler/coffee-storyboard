@@ -6,6 +6,7 @@
 //  Copyright © 2020 Do Thai Bao. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 protocol EditUserInfoViewControllerDelegate: AnyObject {
@@ -70,7 +71,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, UIScrol
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height*1.5)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height*1.2)
     }
     
     //MARK: Text field
@@ -97,7 +98,7 @@ class EditUserInfoViewController: UIViewController, UITextFieldDelegate, UIScrol
     // Formats the date chosen with the date picker.
     fileprivate func formatDateForDisplay(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MM yyyy"
+        formatter.dateFormat = "dd/MM/yyyy"
         return formatter.string(from: date)
     }
     

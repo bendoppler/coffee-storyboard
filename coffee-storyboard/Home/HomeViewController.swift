@@ -79,8 +79,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             userNameLabel.attributedText = boldString
             if let image = stateController?.user.image {
                 profileImageView.image = image
-                profileImageView.makeRounded(borderWidth: 0, color: UIColor.black.cgColor)
+                profileImageView.makeRounded(borderWidth: 0, color: UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 231/255).cgColor)
             }
+            updateUserInfoInCoreData()
         }
         else if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
             if let name = userInfo.name {
@@ -95,7 +96,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             if let birthday = userInfo.birthday {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "dd-MM-yyyy"
+                formatter.dateFormat = "dd/MM/yyyy"
                 stateController?.user.birthday = formatter.string(from: birthday)
             }
             if userInfo.phone_number > 0 {
@@ -103,6 +104,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             if let email = userInfo.email {
                 stateController?.user.email = email
+            }
+            if let data = userInfo.image {
+                let image = UIImage(data: data)
+                stateController?.user.image = image
+                profileImageView.image = image
+                profileImageView.makeRounded(borderWidth: 5, color: UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 231/255).cgColor)
             }
         }
     }
@@ -185,6 +192,29 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         scrollViewHeight.constant = self.view.frame.height * 2/3
     }
     
+    //MARK: Import image
+    @IBAction func importImage(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            CameraHandler.shared.showActionSheet(vc: self)
+            CameraHandler.shared.imagePickedBlock = { [weak self] (image) in
+                self?.profileImageView.image = image
+                self?.profileImageView.makeRounded(borderWidth: 5, color: UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 231/255).cgColor)
+                self?.stateController?.user.image = image
+                self?.updateUserInfoInCoreData()
+            }
+        }
+    }
+    
+    //MARK: Core data
+    private func updateUserInfoInCoreData(){
+        if let userId = UserDefaults.standard.string(forKey: "userID") {
+            container?.performBackgroundTask{ [weak self] (context) in
+                if let stateController = self?.stateController {
+                    try? User.updateUserInfo(userId: userId, familyName: stateController.user.familyName, name: stateController.user.name, birthday: stateController.user.birthday.toDate(), phoneNumber: NumberFormatter().number(from: (stateController.user.phoneNumber))?.int64Value, email: stateController.user.email, image: stateController.user.image?.pngData(), in: context)
+                }
+            }
+        }
+    }
 }
 
 extension UIView {
@@ -197,3 +227,20 @@ extension UIView {
         self.layer.mask = mask
     }
 }
+
+extension String {
+
+    func toDate(withFormat format: String = "dd/MM/yyyy")-> Date?{
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tehran")
+        dateFormatter.locale = Locale(identifier: "fa-IR")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+
+        return date
+
+    }
+}
+

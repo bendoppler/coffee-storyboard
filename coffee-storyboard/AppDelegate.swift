@@ -19,14 +19,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance()?.clientID = "283896599676-f39nlhnfbosnq07sleo7r95t8emumhvc.apps.googleusercontent.com"
         return true
     }
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return GIDSignIn.sharedInstance()?.handle(url) ?? false
     }
     
+    //MARK: Active
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        print("application:willFinishLaunchingWithOptions first")
+        return true
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        print("application:didFinishLaunchingWithOptions second")
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("transition from background to the active state applicationWillEnterForeground second and a half")
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("applicationDidBecomeActive third")
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("applicationWillResignActive fourth")
+    }
+    
+    //MARK: Background
+    var backgroundTaskID: UIBackgroundTaskIdentifier?
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("applicationDidEnterBackground  fifth")
+        // Perform the task on a background queue. Ask for more time
+        DispatchQueue.global().async {
+            // Request the task assertion and save the ID.
+            self.backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "Finish Network Tasks") {
+                // End the task if time expires.
+                print("ask for more time, need to end task if we into this closure")
+                UIApplication.shared.endBackgroundTask(self.backgroundTaskID!)
+                self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+            }
+            // Send the data synchronously.
+//            self.sendAppDataToServer( data: data)
+                  
+            // End the task assertion.
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskID!)
+            self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+        }
+    }
+    
+    //MARK: Terminate
+    func applicationWillTerminate(_ application: UIApplication) {
+           saveContext()
+    }
+    
     //MARK: ios 12 or lower
     var window: UIWindow?
-    let stateController = StateController()
     // MARK: UISceneSession Lifecycle
 
     @available(iOS 13.0, *)
@@ -86,5 +133,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    let stateController = StateController()
 }
-
