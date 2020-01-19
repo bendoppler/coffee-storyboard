@@ -26,8 +26,17 @@ struct UserModel {
     }
 }
 
+struct Location{
+    var name: String
+    init(name: String? = nil) {
+        self.name = name ?? ""
+    }
+}
+
 class StateController {
     var user: UserModel = UserModel()
+    var addresses: [Location] = []
+    var recently: [Location] = []
     
     func update(userInfo: UserModel) {
         user.name = userInfo.name
@@ -36,5 +45,13 @@ class StateController {
         user.phoneNumber = userInfo.phoneNumber
         user.email = userInfo.email
         user.image = userInfo.image
+    }
+    
+    func update(recentAddress: [Location]) {
+        recently.append(contentsOf: recentAddress)
+    }
+    
+    func update(savedAddress: [Location]) {
+        addresses.append(contentsOf: savedAddress)
     }
 }

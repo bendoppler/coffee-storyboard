@@ -10,13 +10,19 @@ import UIKit
 import CoreData
 import GoogleSignIn
 import FacebookLogin
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    //MARK: Google Sigin
+    //MARK: Google Sigin, Google Maps, Google Places
+    let apiKey = "AIzaSyAAb36Nai82Pg1gWKkLjviPuFqne1eG77Q"
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("application:didFinishLaunchingWithOptions second")
         // Initialize sign-in
         GIDSignIn.sharedInstance()?.clientID = "283896599676-f39nlhnfbosnq07sleo7r95t8emumhvc.apps.googleusercontent.com"
+        GMSServices.provideAPIKey(apiKey)
+        GMSPlacesClient.provideAPIKey(apiKey)
         return true
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -27,10 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         print("application:willFinishLaunchingWithOptions first")
         return true
-    }
-    
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        print("application:didFinishLaunchingWithOptions second")
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -133,5 +135,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    let stateController = StateController()
 }

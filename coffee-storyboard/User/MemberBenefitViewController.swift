@@ -29,7 +29,7 @@ class MemberBenefitViewController: UIViewController {
         memberDetailInfoView.layer.borderColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0).cgColor
         memberDetailInfoView.roundCorners([.topRight, .bottomRight, .topLeft, .bottomLeft], radius: 5.0, color: UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0))
         memberBenefitView.roundCorners([.topRight, .bottomRight, .topLeft, .bottomLeft], radius: 8.0, color: UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0))
-        memberBenefitView.drawShadow(0.6, UIColor.lightGray.cgColor)
+        memberBenefitView.drawShadow(opacity: 0.6, color: UIColor.lightGray.cgColor)
     }
     
     

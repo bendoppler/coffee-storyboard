@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -505,12 +505,18 @@
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wb8-pZ-jAk">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="EFI-kd-I1S" appends="YES" id="6ww-Wq-YkE"/>
+                                                                </connections>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quản lý địa chỉ nhận hàng" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIQ-GF-TrN">
                                                                 <rect key="frame" x="37.999999999999986" y="0.0" width="187.66666666666663" height="40"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="EFI-kd-I1S" appends="YES" id="or8-28-Hvd"/>
+                                                                </connections>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
@@ -654,9 +660,15 @@
                         <outlet property="userNameLabel" destination="n7y-WC-byP" id="VIn-GJ-KJK"/>
                         <segue destination="ygp-l4-4o4" kind="show" identifier="Show Benefit" id="u2T-oy-3zN"/>
                         <segue destination="IH1-j7-nbb" kind="show" identifier="Show Info" id="KGK-3A-J9h"/>
+                        <segue destination="Wq4-T8-lAD" kind="show" identifier="Show Address" id="YGs-xl-JXO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zND-Km-FLn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="EFI-kd-I1S">
+                    <connections>
+                        <action selector="showAddressScreen:" destination="sWE-XE-9Cu" id="t2C-2y-wxi"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="BnF-eo-1EJ">
                     <connections>
                         <action selector="showMemberBenefitScreen:" destination="sWE-XE-9Cu" id="1fD-HC-iud"/>
@@ -1155,6 +1167,141 @@ fermentum.</string>
             </objects>
             <point key="canvasLocation" x="4421.739130434783" y="817.63392857142856"/>
         </scene>
+        <!--Autocomplete View Controller-->
+        <scene sceneID="fWa-r3-3Sv">
+            <objects>
+                <viewController id="3eE-3c-F9e" customClass="AutocompleteViewController" customModule="coffee_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Dv-4X-3pg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kf3-cZ-hMY">
+                                <rect key="frame" x="0.0" y="159" width="414" height="737"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="52" id="lKM-3p-TyG" customClass="LocationTableViewCell" customModule="coffee_storyboard" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="52"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lKM-3p-TyG" id="79n-u7-skn">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6J-wC-GYX">
+                                                    <rect key="frame" x="43" y="6" width="351" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="351" id="P99-aN-aGo"/>
+                                                    </constraints>
+                                                    <string key="text">Lorem ipsum dolor sit amet, Constur 
+adipiscing Elit</string>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="j1W-H0-Ux9">
+                                                    <rect key="frame" x="20" y="16" width="15" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="ldz-TF-1WT"/>
+                                                        <constraint firstAttribute="width" secondItem="j1W-H0-Ux9" secondAttribute="height" multiplier="3:4" id="lhH-uw-UqT"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="E6J-wC-GYX" firstAttribute="top" secondItem="79n-u7-skn" secondAttribute="topMargin" constant="-5" id="2du-m9-cdy"/>
+                                                <constraint firstAttribute="trailing" secondItem="E6J-wC-GYX" secondAttribute="trailing" constant="20" id="7jd-ul-Xjk"/>
+                                                <constraint firstItem="E6J-wC-GYX" firstAttribute="centerY" secondItem="79n-u7-skn" secondAttribute="centerY" id="Cov-D3-tNn"/>
+                                                <constraint firstItem="E6J-wC-GYX" firstAttribute="leading" secondItem="j1W-H0-Ux9" secondAttribute="trailing" constant="8" id="E8o-7R-8G1"/>
+                                                <constraint firstItem="E6J-wC-GYX" firstAttribute="centerY" secondItem="j1W-H0-Ux9" secondAttribute="centerY" id="Sr4-3O-Y1q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="E6J-wC-GYX" id="Am2-8h-04Y"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmk-cx-Oca" customClass="SearchTextField" customModule="coffee_storyboard" customModuleProvider="target">
+                                <rect key="frame" x="20" y="96" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bmk-cx-Oca" secondAttribute="height" multiplier="187:25" id="H6C-Zn-Q9t"/>
+                                    <constraint firstAttribute="height" constant="50" id="RQh-X1-KYt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sql-8V-FF4">
+                                <rect key="frame" x="41" y="797" width="332" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.73549724679999995" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Sql-8V-FF4" secondAttribute="height" multiplier="331:50" id="IAY-ok-8J2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Xác nhận">
+                                    <color key="titleColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="save:" destination="3eE-3c-F9e" eventType="touchUpInside" id="WZA-Sd-DLS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Sql-8V-FF4" firstAttribute="leading" secondItem="Uqq-fq-osY" secondAttribute="leading" constant="41" id="2cI-Rw-ozi"/>
+                            <constraint firstItem="bmk-cx-Oca" firstAttribute="top" secondItem="Uqq-fq-osY" secondAttribute="top" constant="8" id="Aws-86-J2o"/>
+                            <constraint firstItem="bmk-cx-Oca" firstAttribute="centerX" secondItem="kf3-cZ-hMY" secondAttribute="centerX" id="Ika-rS-okO"/>
+                            <constraint firstItem="Sql-8V-FF4" firstAttribute="width" secondItem="Sql-8V-FF4" secondAttribute="height" multiplier="331:50" id="Thd-1n-Au4"/>
+                            <constraint firstItem="Sql-8V-FF4" firstAttribute="centerX" secondItem="kf3-cZ-hMY" secondAttribute="centerX" id="aH9-4w-6lc"/>
+                            <constraint firstItem="Uqq-fq-osY" firstAttribute="bottom" secondItem="Sql-8V-FF4" secondAttribute="bottom" constant="15" id="ebs-tA-yhk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Uqq-fq-osY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Suu-9j-gKr"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="bmk-cx-Oca" id="W0B-PK-dJK"/>
+                        <outlet property="tableView" destination="kf3-cZ-hMY" id="mB1-WY-fEq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rg4-G3-q5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4242.0289855072469" y="2185.7142857142858"/>
+        </scene>
+        <!--Address View Controller-->
+        <scene sceneID="S0k-xN-u93">
+            <objects>
+                <viewController id="Wq4-T8-lAD" customClass="AddressViewController" customModule="coffee_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XrD-LX-YnO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ef1-t6-2E4">
+                                <rect key="frame" x="20" y="121" width="374" height="128"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash" translatesAutoresizingMaskIntoConstraints="NO" id="QQK-cr-Znr">
+                                        <rect key="frame" x="-111" y="-39" width="596" height="206"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="QQK-cr-Znr" firstAttribute="centerX" secondItem="ef1-t6-2E4" secondAttribute="centerX" id="3ef-LQ-SHB"/>
+                                    <constraint firstItem="QQK-cr-Znr" firstAttribute="centerY" secondItem="ef1-t6-2E4" secondAttribute="centerY" id="XNA-uT-vjw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ef1-t6-2E4" firstAttribute="top" secondItem="RYS-hx-Iaa" secondAttribute="top" constant="33" id="KFt-Ph-1Cc"/>
+                            <constraint firstItem="RYS-hx-Iaa" firstAttribute="bottom" secondItem="ef1-t6-2E4" secondAttribute="bottom" constant="613" id="P99-9s-m2n"/>
+                            <constraint firstItem="ef1-t6-2E4" firstAttribute="leading" secondItem="XrD-LX-YnO" secondAttribute="leadingMargin" id="mcl-vW-kwc"/>
+                            <constraint firstItem="ef1-t6-2E4" firstAttribute="trailing" secondItem="XrD-LX-YnO" secondAttribute="trailingMargin" id="z9i-q7-qZc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RYS-hx-Iaa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6rM-Pf-910"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Enh-CF-cjB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5313.04347826087" y="1504.6875"/>
+        </scene>
         <!--Intro View Controller-->
         <scene sceneID="bew-1g-xvw">
             <objects>
@@ -1170,7 +1317,7 @@ fermentum.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tích điểm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2S-8Z-Pp3">
-                                <rect key="frame" x="130" y="652" width="154" height="40"/>
+                                <rect key="frame" x="131" y="652" width="152.33333333333337" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="34"/>
                                 <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1194,16 +1341,16 @@ fermentum.</string>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7dW-t6-eL6">
-                                <rect key="frame" x="127" y="806" width="160" height="48"/>
+                                <rect key="frame" x="163" y="830" width="88" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="2Yk-VG-LUd">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q28-sY-O9b">
-                                        <rect key="frame" x="56" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="32" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-2" translatesAutoresizingMaskIntoConstraints="NO" id="Jk5-K0-4Sc">
-                                        <rect key="frame" x="112" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="64" y="7" width="24" height="10"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -1293,16 +1440,16 @@ fermentum.</string>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VFx-1d-gw0">
-                                <rect key="frame" x="127" y="806" width="160" height="48"/>
+                                <rect key="frame" x="163" y="830" width="88" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-1" translatesAutoresizingMaskIntoConstraints="NO" id="sbE-O3-jSx">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="0.0" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="OZ4-Rc-IsE">
-                                        <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="32" y="0.0" width="24" height="24"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-2" translatesAutoresizingMaskIntoConstraints="NO" id="hQZ-x1-OC0">
-                                        <rect key="frame" x="112" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="64" y="7" width="24" height="10"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -1398,16 +1545,16 @@ fermentum.</string>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="diB-x3-8sJ">
-                                <rect key="frame" x="127" y="806" width="160" height="48"/>
+                                <rect key="frame" x="163" y="830" width="88" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-2" translatesAutoresizingMaskIntoConstraints="NO" id="fN2-ob-s8v">
-                                        <rect key="frame" x="0.0" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="0.0" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse-1" translatesAutoresizingMaskIntoConstraints="NO" id="SMT-4G-RuA">
-                                        <rect key="frame" x="56" y="14" width="48" height="20"/>
+                                        <rect key="frame" x="32" y="7" width="24" height="10"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="y3r-e9-r9v">
-                                        <rect key="frame" x="112" y="0.0" width="48" height="48"/>
+                                        <rect key="frame" x="64" y="0.0" width="24" height="24"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -1499,6 +1646,89 @@ fermentum.</string>
             </objects>
             <point key="canvasLocation" x="2562.3188405797105" y="843.75"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z34-va-Xqy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yfd-mr-1OM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Cn-IL-hSh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dea-th-jWF" kind="relationship" relationship="rootViewController" id="otP-eu-Nr5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9W-qJ-gLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="2186"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="MHF-nv-L9U">
+            <objects>
+                <viewController id="Dea-th-jWF" customClass="MapViewController" customModule="coffee_storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kDx-Hf-92l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3y9-XR-68l" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="901"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rY-I6-3Zb">
+                                <rect key="frame" x="41.333333333333343" y="148" width="331.33333333333326" height="50"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.98039215690000003" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hgj-ei-0ny"/>
+                                </constraints>
+                                <state key="normal" title="Search Location">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAutocompleteScreen:" destination="Dea-th-jWF" eventType="touchUpInside" id="dZP-eH-rNI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pi4-tE-Uvu">
+                                <rect key="frame" x="41.333333333333343" y="804" width="331" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.73549724679999995" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pi4-tE-Uvu" secondAttribute="height" multiplier="331:50" id="frq-JR-Cln"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Xác nhận">
+                                    <color key="titleColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3y9-XR-68l" firstAttribute="centerY" secondItem="kDx-Hf-92l" secondAttribute="centerY" constant="2.5" id="2XQ-RM-bN6"/>
+                            <constraint firstItem="3y9-XR-68l" firstAttribute="centerX" secondItem="n52-yW-uQn" secondAttribute="centerX" id="Crp-vP-afs"/>
+                            <constraint firstItem="5rY-I6-3Zb" firstAttribute="centerX" secondItem="3y9-XR-68l" secondAttribute="centerX" id="Q01-9S-gte"/>
+                            <constraint firstItem="5rY-I6-3Zb" firstAttribute="top" secondItem="n52-yW-uQn" secondAttribute="top" constant="60" id="Uca-lU-gHa"/>
+                            <constraint firstItem="n52-yW-uQn" firstAttribute="bottom" secondItem="Pi4-tE-Uvu" secondAttribute="bottom" constant="8" id="VbL-td-hjC"/>
+                            <constraint firstItem="Pi4-tE-Uvu" firstAttribute="leading" secondItem="5rY-I6-3Zb" secondAttribute="leading" id="WEI-wl-iSK"/>
+                            <constraint firstItem="3y9-XR-68l" firstAttribute="height" secondItem="kDx-Hf-92l" secondAttribute="height" constant="5" id="cjb-GG-mMK"/>
+                            <constraint firstItem="n52-yW-uQn" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pi4-tE-Uvu" secondAttribute="trailing" symbolic="YES" id="irp-XZ-qSc"/>
+                            <constraint firstItem="3y9-XR-68l" firstAttribute="width" secondItem="kDx-Hf-92l" secondAttribute="width" id="jRf-YM-RaQ"/>
+                            <constraint firstItem="Pi4-tE-Uvu" firstAttribute="height" secondItem="5rY-I6-3Zb" secondAttribute="height" id="jaE-eF-orV"/>
+                            <constraint firstItem="5rY-I6-3Zb" firstAttribute="width" secondItem="3y9-XR-68l" secondAttribute="width" multiplier="0.8" id="wrN-qI-Brb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n52-yW-uQn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7Yt-1f-AbL"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="Pi4-tE-Uvu" id="HWI-Ma-SP8"/>
+                        <outlet property="mapView" destination="3y9-XR-68l" id="H7f-Lj-Mhn"/>
+                        <outlet property="searchButton" destination="5rY-I6-3Zb" id="GaT-x4-iWN"/>
+                        <segue destination="3eE-3c-F9e" kind="show" identifier="Show Autocomplete" id="zIp-D9-4Sc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jO1-20-t1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3011.594202898551" y="2185.7142857142858"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Ellipse" width="24" height="24"/>
@@ -1512,7 +1742,9 @@ fermentum.</string>
         <image name="atm_card" width="20.333333969116211" height="20"/>
         <image name="coupon" width="42" height="42"/>
         <image name="coupon-sample" width="212" height="150"/>
+        <image name="dash" width="298" height="103"/>
         <image name="divider" width="300" height="1.3333333730697632"/>
+        <image name="location" width="14.666666984558105" height="20"/>
         <image name="location_icon" width="15.333333015441895" height="20"/>
         <image name="lock" width="20" height="20"/>
         <image name="news-sample" width="343" height="239"/>

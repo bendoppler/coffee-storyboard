@@ -43,8 +43,8 @@ class UserViewController: UIViewController {
         nextButtonView.layer.borderWidth = 1
         nextButtonView.roundCorners([.topRight, .bottomRight], radius: 5.0, color: UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0))
         nextButtonView.layer.borderColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1.0).cgColor
-        accountInfoView.drawShadow(0.5, UIColor.lightGray.cgColor)
-        notificationView.drawShadow(0.5, UIColor.lightGray.cgColor)
+        accountInfoView.drawShadow(opacity: 0.5, color: UIColor.lightGray.cgColor)
+        notificationView.drawShadow(opacity: 0.5, color: UIColor.lightGray.cgColor)
         let height = self.view.bounds.height
         profileImageTopSpacing.constant = height * 69/896
         profileImageLeadingSpacing.constant = height * 50/896
@@ -75,6 +75,14 @@ class UserViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func showAddressScreen(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            performSegue(withIdentifier: "Show Address", sender: sender)
+        }
+    }
+    
+    //MARK: Update UI when comeback to this screen
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let height = self.view.bounds.height
@@ -107,7 +115,7 @@ class UserViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    //MARK: Segue
+    //MARK: Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Benefit" {
             if let memberBenefitVC = segue.destination as? MemberBenefitViewController {
@@ -127,12 +135,19 @@ class UserViewController: UIViewController {
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
                 userInfoVC.title = "Chỉnh sửa thông tin cá nhân"
             }
+        } else if segue.identifier == "Show Address" {
+            if let addressVC = segue.destination as? AddressViewController {
+                if let tabBarVC = tabBarController as? TabBarViewController {
+                    tabBarVC.customTabBar.isHidden = true
+                }
+                self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
+                addressVC.title = "Quản lý địa chỉ nhận hàng"
+            }
         }
     }
     
-    //MARK: Passing data between tab views
+    //MARK: stateController
     var stateController: StateController?
-    
     
 }
 
@@ -144,7 +159,7 @@ extension UserViewController: EditUserInfoViewControllerDelegate {
 }
 
 extension UIView {
-    func drawShadow(_ opacity: Float,_ color: CGColor) {
+    func drawShadow(opacity: Float, color: CGColor) {
         let shadowPath = UIBezierPath(rect: self.bounds)
         self.layer.masksToBounds = false
         self.layer.shadowColor = color
