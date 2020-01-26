@@ -29,6 +29,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var accountInfoView: UIView!
     @IBOutlet weak var notificationView: UIView!
+    @IBOutlet weak var showAddressStackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
         editProfileLabel.layer.masksToBounds = true
@@ -57,6 +58,8 @@ class UserViewController: UIViewController {
         notificationSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         accountInfoView.roundCorners([.topLeft,.topRight, .bottomLeft, .bottomRight], radius: 5.0, color: UIColor.white)
         notificationView.roundCorners([.topLeft,.topRight, .bottomLeft, .bottomRight], radius: 5.0, color: UIColor.white)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.showAddressScreen(_:)))
+        self.showAddressStackView.addGestureRecognizer(gesture)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -142,11 +145,11 @@ class UserViewController: UIViewController {
                 }
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Roboto-Bold", size: 16)!]
                 addressVC.title = "Quản lý địa chỉ nhận hàng"
+                addressVC.stateController = stateController
             }
         }
     }
     
-    //MARK: stateController
     var stateController: StateController?
     
 }

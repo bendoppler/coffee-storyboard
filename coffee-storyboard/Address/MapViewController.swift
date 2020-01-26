@@ -47,11 +47,11 @@ class MapViewController: UIViewController {
             if let autocompleteVC = segue.destination as? AutocompleteViewController {
                 if let stateController = stateController {
                     var size = stateController.addresses.size
-                    for index in 0...stateController.addresses.count {
+                    for index in 0..<size {
                         autocompleteVC.savedAddress[index] = stateController.addresses[size-index-1]
                     }
                     size = stateController.recently.size
-                    for index in 0...stateController.recently.count {
+                    for index in 0..<size {
                         autocompleteVC.recentlyAddress[index] = stateController.recently[size-index-1]
                     }
                 }
