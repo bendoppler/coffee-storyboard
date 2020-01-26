@@ -109,6 +109,11 @@ class MapViewController: UIViewController {
                 }
             }
     }
+    
+    @IBAction func saveAddress(_ sender: UIButton) {
+        stateController?.addresses.append(Location(name: mapView.selectedMarker?.title))
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -142,7 +147,7 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 extension MapViewController: AutocompleteViewControllerDelegate {
     func update(savedAddress: [Location], recentAddress: [Location]) {
-        stateController?.update(recentAddress: savedAddress)
-        stateController?.update(savedAddress: recentAddress)
+        stateController?.update(recentAddress: recentAddress)
+        stateController?.update(savedAddress: savedAddress)
     }
 }

@@ -12,4 +12,5 @@ class AddressCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var houseNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    
 }

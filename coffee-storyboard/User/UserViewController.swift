@@ -79,7 +79,7 @@ class UserViewController: UIViewController {
     }
     
     
-    @IBAction func showAddressScreen(_ sender: UITapGestureRecognizer) {
+    @objc func showAddressScreen(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             performSegue(withIdentifier: "Show Address", sender: sender)
         }

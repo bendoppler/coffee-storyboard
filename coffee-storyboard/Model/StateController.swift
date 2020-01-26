@@ -26,10 +26,13 @@ struct UserModel {
     }
 }
 
-struct Location{
+struct Location: Hashable{
     var name: String
     init(name: String? = nil) {
         self.name = name ?? ""
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
     }
 }
 
@@ -48,10 +51,28 @@ class StateController {
     }
     
     func update(recentAddress: [Location]) {
-        recently.append(contentsOf: recentAddress)
+        recently.update(addresses: recentAddress)
     }
     
     func update(savedAddress: [Location]) {
-        addresses.append(contentsOf: savedAddress)
+        addresses.update(addresses: savedAddress)
+    }
+}
+
+extension Array where Element == Location {
+    mutating func update(addresses: [Location]) {
+        var tmpAddresses: [Location] = []
+        addresses.unique.forEach { (addLocation) in
+            var isAdded = false
+            self.unique.forEach { (existedLocation) in
+                if existedLocation.name != "", existedLocation == addLocation {
+                    isAdded = true
+                }
+            }
+            if isAdded == false {
+                tmpAddresses.append(addLocation)
+            }
+        }
+        self.append(contentsOf: tmpAddresses)
     }
 }
