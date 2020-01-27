@@ -12,5 +12,6 @@ class AddressCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var houseNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
+    @IBOutlet weak var editImageView: UIImageView!
+    @IBOutlet weak var deleteImageVIew: UIImageView!
 }

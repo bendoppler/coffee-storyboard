@@ -18,10 +18,9 @@ class AutocompleteViewController: UIViewController, UITableViewDelegate, UITable
     var userLat: CLLocationDegrees = 20.0
     var userLon: CLLocationDegrees = 20.0
     private var currentRecent = 0
-    private var currentSave = 0
     //MARK: Delegate: table view and search textfield
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchTextField: SearchTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +43,7 @@ class AutocompleteViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        tableView.reloadData()
     }
     
     // MARK: Data model
@@ -104,7 +104,7 @@ class AutocompleteViewController: UIViewController, UITableViewDelegate, UITable
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         tableView.isHidden = false
-        if let text = searchTextField.text {
+        if let text = searchTextField.text, text != "" {
             recentlyAddress[currentRecent%5].name = text
             currentRecent += 1
         }
@@ -112,19 +112,20 @@ class AutocompleteViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let textField = searchTextField as? SearchTextField {
-            textField.tableView?.isHidden = true
-        }
+        searchTextField.tableView?.isHidden = true
         return true
     }
     
     //MARK: Closure to pass data backward
-    var updateAddressLocationClosure: ((String) -> Void)?
+    var updateAddressLocationClosure: ((Location) -> Void)?
     
     @IBAction func save(_ sender: UIButton) {
-        if let searchText = searchTextField.text, recentlyAddress[(currentRecent-1)%5].name == searchText {
-            updateAddressLocationClosure?(searchText)
+        if let searchText = searchTextField.text, currentRecent-1 >= 0, recentlyAddress[(currentRecent-1)%5].name == searchText {
+            
+            updateAddressLocationClosure?(Location(name: searchTextField.location.name, latitude: searchTextField.location.latitude, longitude: searchTextField.location.longitude))
             delegate?.update(savedAddress: savedAddress, recentAddress: recentlyAddress)
+            navigationController?.popViewController(animated: true)
+        }else {
             navigationController?.popViewController(animated: true)
         }
     }

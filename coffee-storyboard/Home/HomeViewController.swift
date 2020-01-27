@@ -73,17 +73,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let screenHeight = self.view.bounds.height
-        if let name = stateController?.user.name, name != "" {
-            let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto-Bold", size: screenHeight*16/896)!]
-            let boldString = NSAttributedString(string: name, attributes: attributes)
-            userNameLabel.attributedText = boldString
+        if let addresses = stateController?.savedLocations, addresses.count > 0 {
+            updateAddressesCoreData(addresses: addresses)
+        }
+        if let user = stateController?.user{
+            if user.name != "" {
+                let attributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Roboto-Bold", size: screenHeight*16/896)!]
+                let boldString = NSAttributedString(string: user.name, attributes: attributes)
+                userNameLabel.attributedText = boldString
+            }
             if let image = stateController?.user.image {
                 profileImageView.image = image
                 profileImageView.makeRounded(borderWidth: 0, color: UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 231/255).cgColor)
             }
             updateUserInfoInCoreData()
         }
-        else if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
+        if let userId = UserDefaults.standard.string(forKey: "userID"), let userInfo = Utilities.getUserInfo(userId: userId, container: container) {
             if let name = userInfo.name {
                 stateController?.user.name = name
                 let userName = name
@@ -111,6 +116,22 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 profileImageView.image = image
                 profileImageView.makeRounded(borderWidth: 5, color: UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 231/255).cgColor)
             }
+        }
+        
+        if let addresses = Utilities.getAddresses(container: container), addresses.count > 0 {
+            var locations: [Location] = []
+            addresses.unique.forEach {
+                locations.append(Location(name: $0.name, latitude: $0.latitude, longitude: $0.longitude))
+            }
+            stateController?.update(savedAddress: locations)
+        }
+        
+        if let addresses = Utilities.getRecentAddresses(container: container), addresses.count > 0 {
+            var locations: [Location] = []
+            addresses.unique.forEach {
+                locations.append(Location(name: $0.name, latitude: $0.latitude, longitude: $0.longitude))
+            }
+            stateController?.update(recentAddress: locations)
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -214,6 +235,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         }
+    }
+    private func updateAddressesCoreData(addresses: [Location]) {
+        container?.performBackgroundTask({ (context) in
+            addresses.forEach {
+                try? Address.saveAddress(name: $0.name, latitude: $0.latitude, longitude: $0.longitude, in: context)
+            }
+        })
     }
 }
 

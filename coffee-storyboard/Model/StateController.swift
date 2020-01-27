@@ -28,18 +28,24 @@ struct UserModel {
 
 struct Location: Hashable{
     var name: String
-    init(name: String? = nil) {
+    var latitude: Double
+    var longitude: Double
+    init(name: String? = nil, latitude: Double? = nil, longitude: Double? = nil) {
         self.name = name ?? ""
+        self.latitude = latitude ?? -100
+        self.longitude = latitude ?? -200
     }
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
+        hasher.combine(latitude)
+        hasher.combine(longitude)
     }
 }
 
 class StateController {
     var user: UserModel = UserModel()
-    var addresses: [Location] = []
-    var recently: [Location] = []
+    var savedLocations: [Location] = []
+    var recentLocations: [Location] = []
     
     func update(userInfo: UserModel) {
         user.name = userInfo.name
@@ -51,11 +57,28 @@ class StateController {
     }
     
     func update(recentAddress: [Location]) {
-        recently.update(addresses: recentAddress)
+        recentLocations.update(addresses: recentAddress)
     }
     
-    func update(savedAddress: [Location]) {
-        addresses.update(addresses: savedAddress)
+    func update(savedAddress: [Location], address: String? = nil, location: Location? = nil) {
+        if let address = address, let location = location {
+            for index in 0..<savedLocations.count {
+                if savedLocations[index].name == address {
+                    savedLocations[index] = location
+                }
+            }
+        }else {
+            savedLocations.update(addresses: savedAddress)
+        }
+    }
+    
+    func delete(address: String) {
+        for index in 0..<savedLocations.count {
+            if savedLocations[index].name == address {
+                savedLocations.remove(at: index)
+                break
+            }
+        }
     }
 }
 
@@ -64,12 +87,13 @@ extension Array where Element == Location {
         var tmpAddresses: [Location] = []
         addresses.unique.forEach { (addLocation) in
             var isAdded = false
-            self.unique.forEach { (existedLocation) in
-                if existedLocation.name != "", existedLocation == addLocation {
+            for existedLocation in self {
+                if existedLocation == addLocation {
                     isAdded = true
+                    break
                 }
             }
-            if isAdded == false {
+            if isAdded == false, addLocation.name != ""{
                 tmpAddresses.append(addLocation)
             }
         }

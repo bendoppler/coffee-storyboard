@@ -11,6 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 class MapViewController: UIViewController {
 
@@ -26,7 +27,7 @@ class MapViewController: UIViewController {
     
     var userLat: CLLocationDegrees = 20.0
     var userLon: CLLocationDegrees = 20.0
-    var currentAddress: String?
+    var currentLocation: Location?
     
     let googleApiKey = "AIzaSyDskFtKfxUL2SXmS6zGtYO7AW7BKhDTfK0"
     
@@ -46,18 +47,18 @@ class MapViewController: UIViewController {
         if segue.identifier == "Show Autocomplete" {
             if let autocompleteVC = segue.destination as? AutocompleteViewController {
                 if let stateController = stateController {
-                    var size = stateController.addresses.size
+                    var size = stateController.savedLocations.size < 5 ? stateController.savedLocations.size : 5
                     for index in 0..<size {
-                        autocompleteVC.savedAddress[index] = stateController.addresses[size-index-1]
+                        autocompleteVC.savedAddress[index] = stateController.savedLocations[size-index-1]
                     }
-                    size = stateController.recently.size
+                    size = stateController.recentLocations.size < 5 ? stateController.recentLocations.size : 5
                     for index in 0..<size {
-                        autocompleteVC.recentlyAddress[index] = stateController.recently[size-index-1]
+                        autocompleteVC.recentlyAddress[index] = stateController.recentLocations[size-index-1]
                     }
                 }
                 autocompleteVC.delegate = self
-                autocompleteVC.updateAddressLocationClosure = { [weak self] text in
-                    self?.currentAddress = text
+                autocompleteVC.updateAddressLocationClosure = { [weak self] location in
+                    self?.currentLocation = location
                 }
                 autocompleteVC.userLat = userLat
                 autocompleteVC.userLon = userLon
@@ -65,53 +66,42 @@ class MapViewController: UIViewController {
         }
     }
     
+    //MARK: Show user location or editting location
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        if let address = currentAddress {
-            moveToNew(address: address)
+        if let location = currentLocation {
+            moveToNew(location: location)
         }
     }
-    func moveToNew(address: String) {
-        guard let correctedAddress = address.addingPercentEncoding(withAllowedCharacters: .symbols) else {
-            print("Error. cannot cast name into String")
-            return
-        }
-        
-        let urlString =  "https://maps.googleapis.com/maps/api/geocode/json?address=\(correctedAddress)&sensor=false&key=\(self.googleApiKey)"
-        let url = URL(string: urlString)
-        
-        Alamofire.request(url!, method: .get, headers: nil)
-        .validate()
-            .responseJSON { (response) in
-                switch response.result {
-                case.success(let value):
-                    let json = JSON(value)
-                    let lat = json["results"][0]["geometry"]["location"]["lat"].rawString()
-                    let lon = json["results"][0]["geometry"]["location"]["lng"].rawString()
-                    let formattedAddress = json["results"][0]["formatted_address"].rawString()
-                    if let lat = lat, let lon = lon, let address = formattedAddress {
-                        DispatchQueue.main.async {
-                            let latDouble = Double(lat)
-                            let lonDouble = Double(lon)
-                            self.mapView.clear()
-                            let position = CLLocationCoordinate2D(latitude: latDouble ?? 20.0, longitude: lonDouble ?? 10.0)
-                            let marker = GMSMarker(position: position)
-                            let camera = GMSCameraPosition.camera(withLatitude: latDouble ?? 20.0, longitude: lonDouble ?? 10.0, zoom: 15)
-                            self.mapView.camera = camera
-                            marker.title = address
-                            marker.map = self.mapView
-                            self.mapView.selectedMarker = marker
-                        }
-                    }
-                case.failure(let error):
-                    print("\(error.localizedDescription)")
-                }
+    func moveToNew(location: Location) {
+        if location.latitude != -100, location.longitude != -200 {
+            DispatchQueue.main.async {
+                let latDouble = Double(location.latitude)
+                let lonDouble = Double(location.longitude)
+                self.mapView.clear()
+                let position = CLLocationCoordinate2D(latitude: latDouble, longitude: lonDouble)
+                let marker = GMSMarker(position: position)
+                let camera = GMSCameraPosition.camera(withLatitude: latDouble, longitude: lonDouble, zoom: 15)
+                self.mapView.camera = camera
+                marker.title = location.name
+                marker.map = self.mapView
+                self.mapView.selectedMarker = marker
             }
+        }
     }
     
+    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     @IBAction func saveAddress(_ sender: UIButton) {
-        stateController?.addresses.append(Location(name: mapView.selectedMarker?.title))
+        if let address = UserDefaults.standard.string(forKey: "address") {
+            stateController?.update(savedAddress: [Location(name: mapView.selectedMarker?.title, latitude: mapView.selectedMarker?.position.latitude, longitude: mapView.selectedMarker?.position.latitude)], address: address, location: currentLocation)
+            container?.performBackgroundTask({ (context) in
+                try? Address.deleteAddress(name: address, in: context)
+            })
+            UserDefaults.standard.removeObject(forKey: "address")
+        } else {
+            stateController?.update(savedAddress: [Location(name: mapView.selectedMarker?.title, latitude: mapView.selectedMarker?.position.latitude, longitude: mapView.selectedMarker?.position.latitude)])
+        }
         navigationController?.dismiss(animated: true, completion: nil)
     }
 }
@@ -140,9 +130,37 @@ extension MapViewController: CLLocationManagerDelegate {
         userLon = location.coordinate.longitude
         let marker = GMSMarker(position: position)
         mapView.selectedMarker = marker
-        marker.title = "User's location"
-        marker.map = mapView
-        locationManager.stopUpdatingLocation()
+        let urlString =  "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(location.coordinate.latitude),\(location.coordinate.longitude)&key=\(self.googleApiKey)"
+        let url = URL(string: urlString)
+        
+        Alamofire.request(url!, method: .get, headers: nil)
+        .validate()
+            .responseJSON { (response) in
+                switch response.result {
+                case.success(let value):
+                    let json = JSON(value)
+                    let lat = json["results"][0]["geometry"]["location"]["lat"].rawString()
+                    let lon = json["results"][0]["geometry"]["location"]["lng"].rawString()
+                    let formattedAddress = json["results"][0]["formatted_address"].rawString()
+                    if let lat = lat, let lon = lon, let address = formattedAddress {
+                        DispatchQueue.main.async {
+                            let latDouble = Double(lat)
+                            let lonDouble = Double(lon)
+                            self.mapView.clear()
+                            let position = CLLocationCoordinate2D(latitude: latDouble ?? 20.0, longitude: lonDouble ?? 10.0)
+                            let marker = GMSMarker(position: position)
+                            let camera = GMSCameraPosition.camera(withLatitude: latDouble ?? 20.0, longitude: lonDouble ?? 10.0, zoom: 15)
+                            self.mapView.camera = camera
+                            marker.title = address
+                            marker.map = self.mapView
+                            self.mapView.selectedMarker = marker
+                            self.locationManager.stopUpdatingLocation()
+                        }
+                    }
+                case.failure(let error):
+                    print("\(error.localizedDescription)")
+                }
+            }
     }
 }
 extension MapViewController: AutocompleteViewControllerDelegate {

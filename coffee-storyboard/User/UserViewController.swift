@@ -30,6 +30,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var accountInfoView: UIView!
     @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var showAddressStackView: UIStackView!
+    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     override func viewDidLoad() {
         super.viewDidLoad()
         editProfileLabel.layer.masksToBounds = true
@@ -111,8 +112,31 @@ class UserViewController: UIViewController {
         }
         let userName = stateController?.user.name
         userNameLabel.setAttributedFont("Roboto-Bold", height*16/896, userName ?? "")
+        if let _ = stateController?.user {
+            updateUserInfoInCoreData()
+        }
+        if let addresses = stateController?.savedLocations, addresses.count > 0 {
+            updateAddressesCoreData(addresses: addresses)
+        }
+    }
+    //MARK: Core data
+    private func updateUserInfoInCoreData(){
+        if let userId = UserDefaults.standard.string(forKey: "userID") {
+            container?.performBackgroundTask{ [weak self] (context) in
+                if let stateController = self?.stateController {
+                    try? User.updateUserInfo(userId: userId, familyName: stateController.user.familyName, name: stateController.user.name, birthday: stateController.user.birthday.toDate(), phoneNumber: NumberFormatter().number(from: (stateController.user.phoneNumber))?.int64Value, email: stateController.user.email, image: stateController.user.image?.pngData(), in: context)
+                }
+            }
+        }
     }
     
+    private func updateAddressesCoreData(addresses: [Location]) {
+        container?.performBackgroundTask({ (context) in
+            addresses.forEach {
+                try? Address.saveAddress(name: $0.name, latitude: $0.latitude, longitude: $0.longitude, in: context)
+            }
+        })
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)

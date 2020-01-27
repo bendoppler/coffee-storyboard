@@ -15,6 +15,8 @@
 		53133BBC239D4F3A00C3025A /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53133BBB239D4F3A00C3025A /* NewsCollectionViewCell.swift */; };
 		53190027237578E900C7C69F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53190026237578E900C7C69F /* User.swift */; };
 		531BB5E323DD2DA200275B97 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E223DD2DA200275B97 /* AddressCollectionViewCell.swift */; };
+		531BB5E523DD948D00275B97 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E423DD948D00275B97 /* Address.swift */; };
+		531BB5E723DD9DB300275B97 /* RecentAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E623DD9DB300275B97 /* RecentAddress.swift */; };
 		531EAEDC237E88BE009025E4 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */; };
 		5327925823D059C100D70489 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327925723D059C100D70489 /* AddressViewController.swift */; };
 		5327925B23D05E9D00D70489 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327925A23D05E9D00D70489 /* MapViewController.swift */; };
@@ -66,6 +68,8 @@
 		53133BBB239D4F3A00C3025A /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		53190026237578E900C7C69F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		531BB5E223DD2DA200275B97 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		531BB5E423DD948D00275B97 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		531BB5E623DD9DB300275B97 /* RecentAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAddress.swift; sourceTree = "<group>"; };
 		531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		5327925723D059C100D70489 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		5327925A23D05E9D00D70489 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +153,9 @@
 		53190023237578A300C7C69F /* Persistent */ = {
 			isa = PBXGroup;
 			children = (
+				531BB5E423DD948D00275B97 /* Address.swift */,
 				53190026237578E900C7C69F /* User.swift */,
+				531BB5E623DD9DB300275B97 /* RecentAddress.swift */,
 			);
 			path = Persistent;
 			sourceTree = "<group>";
@@ -434,7 +440,9 @@
 				5312A7FF23BB375E003DA9EC /* MemberBenefitInfoItemView.swift in Sources */,
 				5327925823D059C100D70489 /* AddressViewController.swift in Sources */,
 				5327925B23D05E9D00D70489 /* MapViewController.swift in Sources */,
+				531BB5E523DD948D00275B97 /* Address.swift in Sources */,
 				538C117523740B9D0033F209 /* AppDelegate.swift in Sources */,
+				531BB5E723DD9DB300275B97 /* RecentAddress.swift in Sources */,
 				53133BBC239D4F3A00C3025A /* NewsCollectionViewCell.swift in Sources */,
 				531BB5E323DD2DA200275B97 /* AddressCollectionViewCell.swift in Sources */,
 				533319C0238FF79F009A2EED /* TabBarMenu.swift in Sources */,

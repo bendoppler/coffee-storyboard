@@ -16,4 +16,17 @@ class Utilities {
         }
         return nil
     }
+    
+    static func getAddresses(container: NSPersistentContainer?) -> [Address]? {
+        if let context = container?.viewContext {
+            return try? Address.retrieveAddresses(in: context)
+        }
+        return nil
+    }
+    static func getRecentAddresses(container: NSPersistentContainer?) -> [RecentAddress]? {
+        if let context = container?.viewContext {
+            return try? RecentAddress.retrieveAddresses(in: context)
+        }
+        return nil
+    }
 }

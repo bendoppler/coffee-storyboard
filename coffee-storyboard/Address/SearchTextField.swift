@@ -20,6 +20,7 @@ class SearchTextField: UITextField {
     var userLat: CLLocationDegrees = 20.0
     var userLon: CLLocationDegrees = 20.0
     var location = Location(name: nil)
+    let googleApiKey = "AIzaSyDskFtKfxUL2SXmS6zGtYO7AW7BKhDTfK0"
     
     // Connecting the new element to the parent view
     open override func willMove(toWindow newWindow: UIWindow?) {
@@ -73,7 +74,7 @@ class SearchTextField: UITextField {
             let filter = GMSAutocompleteFilter()
             let placesClient = GMSPlacesClient()
             filter.type = .establishment
-            let bounds = GMSCoordinateBounds(coordinate: CLLocationCoordinate2D(latitude: userLat - 1 < -90 ? -90 : userLat-1, longitude: userLon - 2 < -180 ? -180 : userLon - 2), coordinate: CLLocationCoordinate2D(latitude: userLat + 1 > 90 ? 90 : userLat+1, longitude: userLon + 2 > 180 ? 180 : userLon + 2))
+            let bounds = GMSCoordinateBounds(coordinate: CLLocationCoordinate2D(latitude: userLat, longitude: userLon), coordinate: CLLocationCoordinate2D(latitude: userLat, longitude: userLon))
            
             placesClient.autocompleteQuery(text, bounds: bounds, filter: nil) { [weak self] (results, error) in
                 self?.dataList.removeAll()
@@ -174,7 +175,35 @@ extension SearchTextField: UITableViewDelegate, UITableViewDataSource {
         print("selected row")
         self.text = dataList[indexPath.row]
         location.name = dataList[indexPath.row]
-        tableView.isHidden = true
-        self.endEditing(true)
+        guard let correctedAddress = location.name.addingPercentEncoding(withAllowedCharacters: .symbols) else {
+            print("Cannot cast address")
+            return
+        }
+        
+        let urlString =  "https://maps.googleapis.com/maps/api/geocode/json?address=\(correctedAddress)&sensor=false&key=\(self.googleApiKey)"
+        let url = URL(string: urlString)
+        
+        Alamofire.request(url!, method: .get, headers: nil)
+        .validate()
+            .responseJSON { [weak self] (response) in
+                switch response.result {
+                case.success(let value):
+                    let json = JSON(value)
+                    let lat = json["results"][0]["geometry"]["location"]["lat"].rawString()
+                    let lon = json["results"][0]["geometry"]["location"]["lng"].rawString()
+                    if let lat = lat, let lon = lon {
+                        let latDouble = Double(lat)
+                        let lonDouble = Double(lon)
+                        self?.location.latitude = latDouble!
+                        self?.location.longitude = lonDouble!
+                    }
+                    tableView.isHidden = true
+                    self?.endEditing(true)
+                case.failure(let error):
+                    print("\(error.localizedDescription)")
+                    tableView.isHidden = true
+                    self?.endEditing(true)
+                }
+            }
     }
 }
