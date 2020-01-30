@@ -38,6 +38,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var userInfoLabel: UILabel!
     
     
+    
     @IBOutlet weak var scrollViewTopSpacing: NSLayoutConstraint!
     @IBOutlet weak var collectionViewBottomSpacing: NSLayoutConstraint!
     @IBOutlet weak var newsLabelTopSpacing: NSLayoutConstraint!
@@ -66,13 +67,51 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         scrollViewTopSpacing.constant = screenHeight * 53.67/896
         collectionViewBottomSpacing.constant = screenHeight * 400.33/896
         newsLabelTopSpacing.constant = screenHeight * 34/896
+        let gesture1 = UITapGestureRecognizer(target: self, action: #selector(self.showPointScreen(_:)))
+        bonusPointBarView.addGestureRecognizer(gesture1)
+        let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.showCouponScreen(_:)))
+        couponBarView.addGestureRecognizer(gesture2)
     }
     
+    //MARK: Go to next screens
+    @objc func showPointScreen(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            performSegue(withIdentifier: "Show Point", sender: self)
+        }
+    }
+    
+    @objc func showCouponScreen(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            performSegue(withIdentifier: "Show Coupon", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Point" {
+            if let tabBarVC = tabBarController as? TabBarViewController {
+                tabBarVC.customTabBar.isHidden = true
+            }
+            if let pointVC = segue.destination as? PointViewController {
+                pointVC.title = "Quét mã thành viên"
+            }
+        } else if segue.identifier == "Show Coupon" {
+            if let tabBarVC = tabBarController as? TabBarViewController {
+                tabBarVC.customTabBar.isHidden = true
+            }
+            if let couponVC = segue.destination as? CouponViewController {
+                couponVC.title = "Ưu đãi của bạn"
+            }
+        }
+    }
     //MARK: Passing data between tab views
     var stateController: StateController?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let screenHeight = self.view.bounds.height
+        navigationController?.navigationBar.isHidden = true
+        if let tabBarVC = tabBarController as? TabBarViewController {
+            tabBarVC.customTabBar.isHidden = false
+        }
         if let addresses = stateController?.savedLocations, addresses.count > 0 {
             updateAddressesCoreData(addresses: addresses)
         }
@@ -133,9 +172,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             stateController?.update(recentAddress: locations)
         }
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     //MARK: Collection View for coupon and news

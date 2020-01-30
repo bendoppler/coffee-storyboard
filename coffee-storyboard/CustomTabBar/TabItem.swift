@@ -17,8 +17,8 @@ enum TabItem: String, CaseIterable {
         switch self {
         case .home:
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let homeVC = storyBoard.instantiateViewController(withIdentifier: "HomeMVC")
-            return homeVC
+            let rootVC = storyBoard.instantiateViewController(withIdentifier: "RootVC")
+            return rootVC
         case .order:
             return OrderViewController()
         case .pien:

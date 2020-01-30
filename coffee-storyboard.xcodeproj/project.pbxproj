@@ -17,6 +17,10 @@
 		531BB5E323DD2DA200275B97 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E223DD2DA200275B97 /* AddressCollectionViewCell.swift */; };
 		531BB5E523DD948D00275B97 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E423DD948D00275B97 /* Address.swift */; };
 		531BB5E723DD9DB300275B97 /* RecentAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E623DD9DB300275B97 /* RecentAddress.swift */; };
+		531BB5EA23E12D2400275B97 /* PointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E923E12D2400275B97 /* PointViewController.swift */; };
+		531BB5ED23E12D6700275B97 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5EC23E12D6700275B97 /* CouponViewController.swift */; };
+		531BB5EF23E13AA400275B97 /* Coupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5EE23E13AA400275B97 /* Coupon.swift */; };
+		531BB5F123E140A300275B97 /* UseCouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5F023E140A300275B97 /* UseCouponCollectionViewCell.swift */; };
 		531EAEDC237E88BE009025E4 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */; };
 		5327925823D059C100D70489 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327925723D059C100D70489 /* AddressViewController.swift */; };
 		5327925B23D05E9D00D70489 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5327925A23D05E9D00D70489 /* MapViewController.swift */; };
@@ -26,6 +30,7 @@
 		533319BE238FF60D009A2EED /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533319BD238FF60D009A2EED /* TabBarViewController.swift */; };
 		533319C0238FF79F009A2EED /* TabBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533319BF238FF79F009A2EED /* TabBarMenu.swift */; };
 		533319C3238FF9EE009A2EED /* PienViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533319C2238FF9EE009A2EED /* PienViewController.swift */; };
+		5369746723E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5369746623E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift */; };
 		537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537AAECD2385235700183CF7 /* HomeViewController.swift */; };
 		538C117523740B9D0033F209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117423740B9D0033F209 /* AppDelegate.swift */; };
 		538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117623740B9D0033F209 /* SceneDelegate.swift */; };
@@ -70,6 +75,10 @@
 		531BB5E223DD2DA200275B97 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		531BB5E423DD948D00275B97 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		531BB5E623DD9DB300275B97 /* RecentAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAddress.swift; sourceTree = "<group>"; };
+		531BB5E923E12D2400275B97 /* PointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewController.swift; sourceTree = "<group>"; };
+		531BB5EC23E12D6700275B97 /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
+		531BB5EE23E13AA400275B97 /* Coupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coupon.swift; sourceTree = "<group>"; };
+		531BB5F023E140A300275B97 /* UseCouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		531EAEDB237E88BE009025E4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		5327925723D059C100D70489 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		5327925A23D05E9D00D70489 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +88,7 @@
 		533319BD238FF60D009A2EED /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		533319BF238FF79F009A2EED /* TabBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenu.swift; sourceTree = "<group>"; };
 		533319C2238FF9EE009A2EED /* PienViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PienViewController.swift; sourceTree = "<group>"; };
+		5369746623E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		537AAECD2385235700183CF7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		538C117123740B9D0033F209 /* coffee-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coffee-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		538C117423740B9D0033F209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,8 +174,27 @@
 			isa = PBXGroup;
 			children = (
 				5312A80023BB5554003DA9EC /* StateController.swift */,
+				531BB5EE23E13AA400275B97 /* Coupon.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		531BB5E823E12CF200275B97 /* Point */ = {
+			isa = PBXGroup;
+			children = (
+				531BB5E923E12D2400275B97 /* PointViewController.swift */,
+			);
+			path = Point;
+			sourceTree = "<group>";
+		};
+		531BB5EB23E12D4D00275B97 /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				531BB5EC23E12D6700275B97 /* CouponViewController.swift */,
+				531BB5F023E140A300275B97 /* UseCouponCollectionViewCell.swift */,
+				5369746623E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift */,
+			);
+			path = Coupon;
 			sourceTree = "<group>";
 		};
 		531EAEDA237E8889009025E4 /* Fonts */ = {
@@ -268,6 +297,8 @@
 				538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */,
 				531900282375794700C7C69F /* Model */,
 				53190023237578A300C7C69F /* Persistent */,
+				531BB5EB23E12D4D00275B97 /* Coupon */,
+				531BB5E823E12CF200275B97 /* Point */,
 				537AAECC23851CF800183CF7 /* Intro */,
 				537AAECB23851CEA00183CF7 /* Login */,
 				533319B5238FF1D7009A2EED /* Order */,
@@ -431,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				531BB5F123E140A300275B97 /* UseCouponCollectionViewCell.swift in Sources */,
 				53AA07D923A127B100403210 /* ProfileImageView.swift in Sources */,
 				538C117923740B9D0033F209 /* LoginViewController.swift in Sources */,
 				53C1F80C23A3C30E00591D58 /* MemberBenefitViewController.swift in Sources */,
@@ -439,6 +471,7 @@
 				533319BE238FF60D009A2EED /* TabBarViewController.swift in Sources */,
 				5312A7FF23BB375E003DA9EC /* MemberBenefitInfoItemView.swift in Sources */,
 				5327925823D059C100D70489 /* AddressViewController.swift in Sources */,
+				531BB5ED23E12D6700275B97 /* CouponViewController.swift in Sources */,
 				5327925B23D05E9D00D70489 /* MapViewController.swift in Sources */,
 				531BB5E523DD948D00275B97 /* Address.swift in Sources */,
 				538C117523740B9D0033F209 /* AppDelegate.swift in Sources */,
@@ -447,6 +480,7 @@
 				531BB5E323DD2DA200275B97 /* AddressCollectionViewCell.swift in Sources */,
 				533319C0238FF79F009A2EED /* TabBarMenu.swift in Sources */,
 				5312A80123BB5554003DA9EC /* StateController.swift in Sources */,
+				5369746723E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift in Sources */,
 				538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */,
 				53B3341A23D15A5E003BEEC9 /* LocationTableViewCell.swift in Sources */,
 				530A53A723BC7F7500974296 /* EditUserInfoViewController.swift in Sources */,
@@ -457,10 +491,12 @@
 				53F4995823C0459A00A8479E /* CameraHandler.swift in Sources */,
 				537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */,
 				533319C3238FF9EE009A2EED /* PienViewController.swift in Sources */,
+				531BB5EF23E13AA400275B97 /* Coupon.swift in Sources */,
 				538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */,
 				533319BC238FF309009A2EED /* TabItem.swift in Sources */,
 				53133BBA239D46BA00C3025A /* CouponCollectionViewCell.swift in Sources */,
 				533319B7238FF261009A2EED /* OrderViewController.swift in Sources */,
+				531BB5EA23E12D2400275B97 /* PointViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
