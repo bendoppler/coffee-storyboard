@@ -71,6 +71,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         bonusPointBarView.addGestureRecognizer(gesture1)
         let gesture2 = UITapGestureRecognizer(target: self, action: #selector(self.showCouponScreen(_:)))
         couponBarView.addGestureRecognizer(gesture2)
+        let gesture3 = UITapGestureRecognizer(target: self, action: #selector(self.showOrderScreen(_:)))
+        orderBarView.addGestureRecognizer(gesture3)
     }
     
     //MARK: Go to next screens
@@ -83,6 +85,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @objc func showCouponScreen(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             performSegue(withIdentifier: "Show Coupon", sender: self)
+        }
+    }
+    
+    @objc func showOrderScreen(_ sender: UITapGestureRecognizer) {
+        if let tabBarVC = tabBarController as? TabBarViewController {
+            tabBarVC.customTabBar.switchTab(from: 0, to: 1)
         }
     }
     
@@ -100,6 +108,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             if let couponVC = segue.destination as? CouponViewController {
                 couponVC.title = "Ưu đãi của bạn"
+            }
+        }
+        else if segue.identifier == "Show News" {
+            if let tabBarVC = tabBarController as? TabBarViewController {
+                tabBarVC.customTabBar.isHidden = true
+            }
+            if let newsVC = segue.destination as? NewsViewController {
+                newsVC.title = "Piendop"
             }
         }
     }
@@ -220,6 +236,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 couponCell.imageView.image = news[indexPath.item]
             }
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == couponCollectionView {
+             performSegue(withIdentifier: "Show News", sender: self)
         }
     }
     

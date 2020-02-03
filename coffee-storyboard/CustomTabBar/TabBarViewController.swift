@@ -46,6 +46,10 @@ class TabBarViewController: UITabBarController {
                 let userVC = vc.contents as! UserViewController
                 userVC.stateController = stateController
             }
+            if vc.contents is OrderViewController {
+                let orderVC = vc.contents as! OrderViewController
+                orderVC.stateController = stateController
+            }
         }
         self.selectedIndex = 0
     }

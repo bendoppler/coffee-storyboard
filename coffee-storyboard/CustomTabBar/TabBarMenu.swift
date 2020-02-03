@@ -101,7 +101,7 @@ class TabBarMenu: UIView {
         self.activate(tab: to)
     }
     
-    func activate(tab: Int) {
+    private func activate(tab: Int) {
         let activeTab = self.subviews[tab]
         var titleLabel = UILabel()
         var itemImage = UIImageView()

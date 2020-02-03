@@ -8,11 +8,15 @@
 
 import UIKit
 
-class CouponViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+class CouponViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate
 {
     @IBOutlet weak var searchCouponCodeView: UIView!
     @IBOutlet weak var saveCouponButton: UIButton!
-    
+    @IBOutlet weak var couponTextField: UITextField! {
+        didSet {
+            couponTextField.delegate = self
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         searchCouponCodeView.layer.borderColor = UIColor.lightGray.cgColor
@@ -97,5 +101,11 @@ class CouponViewController: UIViewController, UICollectionViewDelegate, UICollec
         } else {
             return CGSize(width: 374, height: 87)
         }
+    }
+    
+    //MARK: UITextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

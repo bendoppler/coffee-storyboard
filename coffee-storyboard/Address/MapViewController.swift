@@ -102,8 +102,11 @@ class MapViewController: UIViewController {
         } else {
             stateController?.update(savedAddress: [Location(name: mapView.selectedMarker?.title, latitude: mapView.selectedMarker?.position.latitude, longitude: mapView.selectedMarker?.position.latitude)])
         }
+        updateOrderLocationClosure?(Location(name: mapView.selectedMarker?.title, latitude: mapView.selectedMarker?.position.latitude, longitude: mapView.selectedMarker?.position.latitude))
         navigationController?.dismiss(animated: true, completion: nil)
     }
+    //MARK: Order screen closure
+    var updateOrderLocationClosure: ((Location) -> Void)?
 }
 
 extension MapViewController: CLLocationManagerDelegate {

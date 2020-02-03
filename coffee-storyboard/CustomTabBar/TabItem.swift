@@ -20,7 +20,9 @@ enum TabItem: String, CaseIterable {
             let rootVC = storyBoard.instantiateViewController(withIdentifier: "RootVC")
             return rootVC
         case .order:
-            return OrderViewController()
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let orderVC = storyBoard.instantiateViewController(withIdentifier: "OrderMVC")
+            return orderVC
         case .pien:
             return PienViewController()
         case .user:

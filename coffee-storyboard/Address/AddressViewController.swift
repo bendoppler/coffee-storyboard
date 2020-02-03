@@ -166,7 +166,6 @@ class AddressViewController: UIViewController, UICollectionViewDelegate, UIColle
               }
           })
       }
-    
 }
 
 extension Array where Element: Hashable {
