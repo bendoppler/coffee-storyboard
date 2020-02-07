@@ -103,6 +103,7 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
                     orderDetailVC.selectedIndex = selectedIndex
                 }
                 orderDetailVC.categories = categories
+                orderDetailVC.stateController = stateController
             }
         }
     }

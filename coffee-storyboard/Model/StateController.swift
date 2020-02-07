@@ -46,6 +46,7 @@ class StateController {
     var user: UserModel = UserModel()
     var savedLocations: [Location] = []
     var recentLocations: [Location] = []
+    var order: Order = Order()
     
     func update(userInfo: UserModel) {
         user.name = userInfo.name
@@ -79,6 +80,9 @@ class StateController {
                 break
             }
         }
+    }
+    func update(order: Order) {
+        self.order = order
     }
 }
 

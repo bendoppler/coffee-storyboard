@@ -14,6 +14,8 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCategoryTabBarView()
+        checkOrderButton.layer.cornerRadius = 8.0
+        checkOrderButton.drawShadow(opacity: 0.8, color: UIColor.lightGray.cgColor)
     }
 
     private func setUpCategoryTabBarView() {
@@ -83,6 +85,8 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var foodView: UIView!
     @IBOutlet weak var backButton: UIImageView!
     @IBOutlet weak var foodTabBarView: UIView!
+    @IBOutlet weak var checkOrderButton: UIButton!
+    
     var categories: [Category]?
     var selectedIndex = 0
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +98,13 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
         topView.drawShadow(opacity: 1.0, color: UIColor.lightGray.cgColor)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(backToMainScreen(_:)))
         backButton.addGestureRecognizer(gesture)
+        navigationController?.navigationBar.isHidden = true
+        if let stateController = stateController, stateController.order.foods.count > 0 {
+            checkOrderButton.isHidden = false
+            checkOrderButton.setTitle("XEM GIỎ HÀNG(" + stateController.order.totalPrice.convertToCurrency() + " vnđ)", for: .normal)
+        }else {
+            checkOrderButton.isHidden = true
+        }
     }
     
     @objc func backToMainScreen(_ sender: UITapGestureRecognizer) {
@@ -130,13 +141,44 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
             foodCell.infoView.layer.borderColor = UIColor.clear.cgColor
             foodCell.infoView.layer.cornerRadius = 5.0
             foodCell.infoView.drawShadow(opacity: 0.8, color: UIColor.lightGray.cgColor)
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.chooseFood(_:)))
+            foodCell.pickItemButton.isUserInteractionEnabled = true
+            foodCell.pickItemButton.tag = indexPath.row
+            foodCell.pickItemButton.addGestureRecognizer(gesture)
         }
         return cell
+    }
+    var selectedFoodIndex: Int?
+    @objc func chooseFood(_ sender: AnyObject) {
+        selectedFoodIndex = sender.view.tag
+        performSegue(withIdentifier: "Show Food", sender: self)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 374, height: 186)
     }
+    
+    //MARK: Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Food" {
+            navigationController?.navigationBar.isHidden = false
+            if let foodOrderVC = segue.destination as? FoodOrderViewController {
+                if let selectedFoodIndex = selectedFoodIndex {
+                    if let categories = categories {
+                        foodOrderVC.title = categories[selectedIndex].foods[selectedFoodIndex].name
+                        foodOrderVC.order = stateController?.order
+                        foodOrderVC.food = categories[selectedIndex].foods[selectedFoodIndex]
+                        foodOrderVC.updateOrderClosure = { [weak self] order in
+                            self?.stateController?.update(order: order)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //MARK: State Controller
+    var stateController: StateController?
     
 }
 

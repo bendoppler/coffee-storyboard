@@ -14,12 +14,14 @@ struct Food {
     var name: String
     var size: String
     var price: Int64
+    var description: String
     
-    init(image: UIImage, name: String, size: String, price: Int64) {
+    init(image: UIImage, name: String, size: String, price: Int64, description: String) {
         self.image = image
         self.name = name
         self.size = size
         self.price = price
+        self.description = description
     }
     
 }
