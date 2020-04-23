@@ -30,7 +30,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        if AccessToken.current == nil && GIDSignIn.sharedInstance()?.hasPreviousSignIn() != true {
+        if AccessToken.current == nil || GIDSignIn.sharedInstance()?.hasPreviousSignIn() != true {
             //create two sigin buttons
             let buttonWidth: CGFloat = view.bounds.width * 3 / 4
             let buttonHeight: CGFloat = buttonWidth*buttonRatio
@@ -54,6 +54,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             spinner.stopAnimating()
             view.addSubview(self.fbSigninButton!)
             view.addSubview(self.ggSiginButton!)
+        }else {
+            performSegueToMainScreen()
         }
         
     }
@@ -64,6 +66,16 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         }
     }
     func performSegueToIntroScreen() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyBoard.instantiateViewController(withIdentifier: "MainMVC")
+        DispatchQueue.main.async {
+            self.spinner.stopAnimating()
+            mainVC.modalPresentationStyle = .overFullScreen
+            self.present(mainVC, animated: true, completion: nil)
+        }
+    }
+    
+    func performSegueToMainScreen() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let introVC = storyBoard.instantiateViewController(withIdentifier: "IntroMVC")
         DispatchQueue.main.async {

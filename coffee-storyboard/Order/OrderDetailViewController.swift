@@ -151,6 +151,7 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     var selectedFoodIndex: Int?
     @objc func chooseFood(_ sender: AnyObject) {
         selectedFoodIndex = sender.view.tag
+        print(sender)
         performSegue(withIdentifier: "Show Food", sender: self)
     }
     
@@ -175,11 +176,18 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
             }
         }
+        else if segue.identifier == "Show Payment" {
+            navigationController?.navigationBar.isHidden = false
+            if let paymentVC = segue.destination as? PaymentViewController
+            {
+                paymentVC.title = "Giỏ hàng"
+                paymentVC.order = stateController?.order
+            }
+        }
     }
     
     //MARK: State Controller
     var stateController: StateController?
-    
 }
 
 extension UIView {

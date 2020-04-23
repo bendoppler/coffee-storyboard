@@ -35,6 +35,9 @@
 		533C26C323E9C9EC004DCD88 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533C26C223E9C9EC004DCD88 /* ButtonView.swift */; };
 		533C26C523E9CEA5004DCD88 /* FoodOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533C26C423E9CEA5004DCD88 /* FoodOrderViewController.swift */; };
 		533C26C723ED48FB004DCD88 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533C26C623ED48FB004DCD88 /* Order.swift */; };
+		5351358D245134B7004E9234 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5351358C245134B7004E9234 /* PaymentViewController.swift */; };
+		5351359024514A3D004E9234 /* PaymentFoodItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5351358F24514A3D004E9234 /* PaymentFoodItemCollectionViewCell.swift */; };
+		53513592245163A8004E9234 /* PaymentButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53513591245163A8004E9234 /* PaymentButtonView.swift */; };
 		5369746723E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5369746623E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift */; };
 		537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537AAECD2385235700183CF7 /* HomeViewController.swift */; };
 		538C117523740B9D0033F209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538C117423740B9D0033F209 /* AppDelegate.swift */; };
@@ -103,6 +106,9 @@
 		533C26C223E9C9EC004DCD88 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		533C26C423E9CEA5004DCD88 /* FoodOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderViewController.swift; sourceTree = "<group>"; };
 		533C26C623ED48FB004DCD88 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		5351358C245134B7004E9234 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		5351358F24514A3D004E9234 /* PaymentFoodItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentFoodItemCollectionViewCell.swift; path = "coffee-storyboard/Order/PaymentFoodItemCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		53513591245163A8004E9234 /* PaymentButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentButtonView.swift; path = "coffee-storyboard/Order/PaymentButtonView.swift"; sourceTree = SOURCE_ROOT; };
 		5369746623E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		537AAECD2385235700183CF7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		538C117123740B9D0033F209 /* coffee-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "coffee-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +292,16 @@
 			path = Pien;
 			sourceTree = "<group>";
 		};
+		5351358E24513BD5004E9234 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				53513591245163A8004E9234 /* PaymentButtonView.swift */,
+				5351358F24514A3D004E9234 /* PaymentFoodItemCollectionViewCell.swift */,
+				5351358C245134B7004E9234 /* PaymentViewController.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		537AAECB23851CEA00183CF7 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +347,7 @@
 				531BB5E823E12CF200275B97 /* Point */,
 				537AAECC23851CF800183CF7 /* Intro */,
 				537AAECB23851CEA00183CF7 /* Login */,
+				5351358E24513BD5004E9234 /* Payment */,
 				533319B5238FF1D7009A2EED /* Order */,
 				533319C1238FF9D7009A2EED /* Pien */,
 				5327925623D059AC00D70489 /* Address */,
@@ -499,6 +516,7 @@
 				538C117923740B9D0033F209 /* LoginViewController.swift in Sources */,
 				53C1F80C23A3C30E00591D58 /* MemberBenefitViewController.swift in Sources */,
 				53B3341823D15888003BEEC9 /* AutocompleteViewController.swift in Sources */,
+				53513592245163A8004E9234 /* PaymentButtonView.swift in Sources */,
 				533319BA238FF2BF009A2EED /* UserViewController.swift in Sources */,
 				533319BE238FF60D009A2EED /* TabBarViewController.swift in Sources */,
 				5312A7FF23BB375E003DA9EC /* MemberBenefitInfoItemView.swift in Sources */,
@@ -517,6 +535,7 @@
 				5312A80123BB5554003DA9EC /* StateController.swift in Sources */,
 				53E792F223E51D9800A020B6 /* CategoryCollectionViewCell.swift in Sources */,
 				5369746723E2A55D000BDF17 /* HistoryCouponCollectionViewCell.swift in Sources */,
+				5351359024514A3D004E9234 /* PaymentFoodItemCollectionViewCell.swift in Sources */,
 				538C117F23740B9D0033F209 /* coffee_storyboard.xcdatamodeld in Sources */,
 				53B3341A23D15A5E003BEEC9 /* LocationTableViewCell.swift in Sources */,
 				53E792F023E5075600A020B6 /* Food.swift in Sources */,
@@ -537,6 +556,7 @@
 				53133BBA239D46BA00C3025A /* CouponCollectionViewCell.swift in Sources */,
 				533319B7238FF261009A2EED /* OrderViewController.swift in Sources */,
 				531BB5EA23E12D2400275B97 /* PointViewController.swift in Sources */,
+				5351358D245134B7004E9234 /* PaymentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,7 +632,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -666,7 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -734,7 +754,7 @@
 				538C118723740B9F0033F209 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		538C118823740B9F0033F209 /* Build configuration list for PBXNativeTarget "coffee-storyboard" */ = {
 			isa = XCConfigurationList;
@@ -743,7 +763,7 @@
 				538C118A23740B9F0033F209 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

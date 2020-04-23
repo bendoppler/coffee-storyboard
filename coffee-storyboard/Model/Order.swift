@@ -9,9 +9,9 @@
 import Foundation
 
 struct Order {
-    var foods: [Food]
+    var foods: [OrderFood]
     
-    init(foods: [Food]? = nil) {
+    init(foods: [OrderFood]? = nil) {
         self.foods = foods ?? []
     }
     
@@ -19,9 +19,18 @@ struct Order {
         get {
             var price: Int64 = 0
             foods.forEach {
-                price += $0.price
+                price += $0.food.price
             }
             return price
         }
+    }
+}
+
+struct OrderFood {
+    var food: Food
+    var cnt: Int
+    init(food: Food, cnt: Int = 1) {
+        self.food = food
+        self.cnt = cnt
     }
 }

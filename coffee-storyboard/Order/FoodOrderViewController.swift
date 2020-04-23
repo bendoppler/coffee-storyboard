@@ -139,8 +139,9 @@ class FoodOrderViewController: UIViewController
         if foodCnt > 0 {
             if var food = food {
                 food.price = price
+                
                 if var order = order {
-                    order.foods.append(food)
+                    order.foods.append(OrderFood(food: food, cnt: Int(foodCnt)))
                     updateOrderClosure?(order)
                 }
             }
@@ -179,13 +180,13 @@ extension FoodOrderViewController: RadioButtonDelegate {
 extension FoodOrderViewController: CheckboxButtonDelegate {
     func chechboxButtonDidSelect(_ button: CheckboxButton) {
         if foodCnt > 0 {
-            price += doubleShot
+            price += doubleShot * foodCnt
         }
     }
     
     func chechboxButtonDidDeselect(_ button: CheckboxButton) {
         if foodCnt > 0 {
-            price -= doubleShot
+            price -= doubleShot * foodCnt
         }
     }
 }
