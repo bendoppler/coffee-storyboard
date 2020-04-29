@@ -109,6 +109,9 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
     
     @objc func backToMainScreen(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
+            if let tabBarVC = tabBarController as? TabBarViewController {
+                tabBarVC.customTabBar.isHidden = false
+            }
             navigationController?.popViewController(animated: true)
         }
     }
@@ -181,7 +184,9 @@ class OrderDetailViewController: UIViewController, UICollectionViewDelegate, UIC
             if let paymentVC = segue.destination as? PaymentViewController
             {
                 paymentVC.title = "Giỏ hàng"
-                paymentVC.order = stateController?.order
+                if let stateController = stateController {
+                    paymentVC.stateController = stateController
+                }
             }
         }
     }

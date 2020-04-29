@@ -12,14 +12,35 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
 
-    var order: Order?
+    var stateController: StateController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.foodCollectionView.reloadData()
         // Do any additional setup after loading the view.
     }
     
-    //MARK: Food collection view
+    //MARK: Address variables
+    var addresses: [String] = []
+    var selectedIndex: Int?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let stateController = stateController {
+            var tmp : [String] = []
+            stateController.savedLocations.unique.forEach {
+                if $0.name != "" {
+                    tmp.append($0.name)
+                }
+            }
+            if tmp.count > 0 {
+                addresses.removeAll()
+                addresses = tmp
+            }
+        }
+    }
+    
+    //MARK: Collection view: food, address, promotion, payment
     @IBOutlet weak var foodCollectionView: UICollectionView! {
         didSet {
             foodCollectionView.delegate = self
@@ -27,37 +48,59 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    @IBOutlet weak var addressCollectionView: UICollectionView! {
+        didSet {
+            addressCollectionView.delegate = self
+            addressCollectionView.dataSource = self
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        if let order = order {
-            return order.foods.count
+        if collectionView == foodCollectionView {
+            return stateController!.order.foods.count
+        }else if collectionView == addressCollectionView {
+            return addresses.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodItemCell", for: indexPath)
-        if let foodCell = cell as? PaymentFoodItemCollectionViewCell, let order = order {
-            print(foodCell.bounds)
-            print(foodCell.infoView.frame)
-            foodCell.infoView.layer.cornerRadius = 3.0
-            foodCell.infoView.drawShadow(opacity: 0.5, color: UIColor.lightGray.cgColor)
-            foodCell.nameLabel.text = order.foods[indexPath.item].food.name
-            foodCell.sizeLabel.text = order.foods[indexPath.item].food.size
-            foodCell.priceLabel.text = order.foods[indexPath.item].food.price.convertToCurrency() + " vnđ"
-            foodCell.foodCntLabel.text = String(order.foods[indexPath.item].cnt)
+        if collectionView == foodCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodItemCell", for: indexPath)
+            if let foodCell = cell as? PaymentFoodItemCollectionViewCell, let order = stateController?.order{
+                foodCell.nameLabel.text = order.foods[indexPath.item].food.name
+                foodCell.sizeLabel.text = order.foods[indexPath.item].food.size
+                foodCell.priceLabel.text = order.foods[indexPath.item].food.price.convertToCurrency() + " vnđ"
+                foodCell.foodCntLabel.text = String(order.foods[indexPath.item].cnt)
+            }
+            return cell
         }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Location Cell", for: indexPath)
+        if let locationCell = cell as? AddressCollectionViewCell {
+            locationCell.houseNameLabel.text = "Nhà " + String(indexPath.row + 1)
+            locationCell.addressLabel.text = addresses[indexPath.row]
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.editAddress(_:)))
+            locationCell.editImageView.isUserInteractionEnabled =  true
+            locationCell.editImageView.tag = indexPath.row
+            locationCell.editImageView.addGestureRecognizer(gesture)
+        }
+        cell.layer.cornerRadius = 5.0
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.drawShadow(opacity: 0.8, color: UIColor.lightGray.cgColor)
         return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.bounds.width
-        let height = collectionView.frame.height
-        print(width)
-        print(height)
-        return CGSize(width: width/2, height: height+20)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
+    //MARK: Edit address
+    
+    @objc func editAddress(_ sender: AnyObject) {
+        selectedIndex = sender.view.tag
+        UserDefaults.standard.set(addresses[sender.view.tag], forKey: "address")
+        performSegue(withIdentifier: "Show Map", sender: self)
+    }
 }

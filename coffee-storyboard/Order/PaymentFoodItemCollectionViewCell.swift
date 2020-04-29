@@ -10,7 +10,7 @@ import UIKit
 
 class PaymentFoodItemCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var infoView: InfoView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
