@@ -116,9 +116,6 @@ class AddressViewController: UIViewController, UICollectionViewDelegate, UIColle
             locationCell.deleteImageVIew.tag = indexPath.row
             locationCell.deleteImageVIew.addGestureRecognizer(gesture2)
         }
-        cell.layer.cornerRadius = 5.0
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.drawShadow(opacity: 0.8, color: UIColor.lightGray.cgColor)
         return cell
     }
     

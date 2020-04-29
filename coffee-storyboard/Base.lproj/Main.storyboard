@@ -1286,7 +1286,7 @@ adipiscing Elit</string>
                                             <rect key="frame" x="0.0" y="0.0" width="384" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-yN-wDU">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UeZ-yN-wDU" customClass="InfoView" customModule="coffee_storyboard" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="384" height="107"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dvp-zr-VUd">
@@ -2343,7 +2343,7 @@ adipiscing Elit</string>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Iow-r0-iwj" secondAttribute="trailing" constant="8" id="ZcW-g6-lwH"/>
                                                         <constraint firstAttribute="width" secondItem="YL0-eZ-Gfj" secondAttribute="height" multiplier="2:1" id="pt6-dh-o85"/>
@@ -2418,55 +2418,51 @@ adipiscing Elit</string>
                                 <color key="textColor" red="1" green="0.7803921568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qVP-Ud-td1">
-                                <rect key="frame" x="0.0" y="284" width="414" height="142"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qVP-Ud-td1">
+                                <rect key="frame" x="0.0" y="264" width="414" height="142"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZP7-rL-dte">
                                     <size key="itemSize" width="384" height="107"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Location Cell" id="Wm2-kr-lW4" customClass="AddressCollectionViewCell" customModule="coffee_storyboard" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="27.666666666666668" width="384" height="107"/>
+                                        <rect key="frame" x="20" y="17.666666666666668" width="384" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gtp-4g-Ijg">
                                             <rect key="frame" x="0.0" y="0.0" width="384" height="107"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5m-xz-MU5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="107"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5m-xz-MU5" customClass="InfoView" customModule="coffee_storyboard" customModuleProvider="target">
+                                                    <rect key="frame" x="21" y="-3.6666666666666643" width="342" height="114.33333333333331"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fiy-io-PPQ">
-                                                            <rect key="frame" x="8" y="0.0" width="205" height="107"/>
+                                                            <rect key="frame" x="8" y="0.0" width="213" height="114.33333333333333"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nhà 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jX-n4-bZG">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="205" height="25.333333333333332"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="44.666666666666664" height="27.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liên xã, khu phố 4  Hoà Thành, Tây Ninh Việt Nam" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyg-Qp-zlm">
-                                                                    <rect key="frame" x="0.0" y="33.333333333333336" width="205" height="73.666666666666657"/>
+                                                                    <rect key="frame" x="0.0" y="35.333333333333343" width="146.33333333333334" height="79"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                                                     <color key="textColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="7jX-n4-bZG" secondAttribute="trailing" id="gZt-dK-bA3"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Yyg-Qp-zlm" secondAttribute="trailing" id="lYZ-U9-z7a"/>
-                                                            </constraints>
                                                         </stackView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vertical-divider" translatesAutoresizingMaskIntoConstraints="NO" id="YDK-wM-A30">
-                                                            <rect key="frame" x="313" y="8" width="43" height="87"/>
+                                                            <rect key="frame" x="271" y="8.3333333333333357" width="43" height="94"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="43" id="vuD-1Z-uOQ"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-jO-Wo7">
-                                                            <rect key="frame" x="342" y="8" width="30" height="80.666666666666671"/>
+                                                            <rect key="frame" x="300" y="8.3333333333333357" width="30" height="80.333333333333314"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="edit" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-61-Af6">
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="23.666666666666668"/>
@@ -2478,7 +2474,7 @@ adipiscing Elit</string>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bhp-8P-jRC">
-                                                                    <rect key="frame" x="0.0" y="56.666666666666671" width="30" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="56.666666666666664" width="30" height="23.666666666666664"/>
                                                                     <accessibility key="accessibilityConfiguration">
                                                                         <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                     </accessibility>
@@ -2494,25 +2490,25 @@ adipiscing Elit</string>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="YDK-wM-A30" secondAttribute="trailing" constant="28" id="9gP-Es-fqJ"/>
                                                         <constraint firstItem="0cC-jO-Wo7" firstAttribute="top" secondItem="YDK-wM-A30" secondAttribute="top" id="Hfh-xO-bm3"/>
-                                                        <constraint firstAttribute="height" constant="107" id="Jhm-Mk-cDH"/>
+                                                        <constraint firstAttribute="height" constant="114" id="K6F-lr-NRN"/>
                                                         <constraint firstItem="fiy-io-PPQ" firstAttribute="leading" secondItem="W5m-xz-MU5" secondAttribute="leadingMargin" id="Z8m-fv-gzl"/>
                                                         <constraint firstItem="YDK-wM-A30" firstAttribute="top" secondItem="W5m-xz-MU5" secondAttribute="top" constant="8" id="aKN-Jc-WHm"/>
-                                                        <constraint firstAttribute="width" secondItem="W5m-xz-MU5" secondAttribute="height" multiplier="384:107" id="aVU-tL-FDb"/>
+                                                        <constraint firstAttribute="width" secondItem="W5m-xz-MU5" secondAttribute="height" multiplier="3:1" id="aVU-tL-FDb"/>
                                                         <constraint firstAttribute="bottom" secondItem="YDK-wM-A30" secondAttribute="bottom" constant="12" id="c40-m5-scd"/>
                                                         <constraint firstAttribute="bottom" secondItem="fiy-io-PPQ" secondAttribute="bottom" id="gRR-vr-lgL"/>
-                                                        <constraint firstItem="YDK-wM-A30" firstAttribute="leading" secondItem="fiy-io-PPQ" secondAttribute="trailing" constant="100" id="iAW-ZN-V5S"/>
+                                                        <constraint firstItem="YDK-wM-A30" firstAttribute="leading" secondItem="fiy-io-PPQ" secondAttribute="trailing" constant="50" id="iAW-ZN-V5S"/>
                                                         <constraint firstItem="fiy-io-PPQ" firstAttribute="top" secondItem="W5m-xz-MU5" secondAttribute="top" id="pwP-Y4-THh"/>
                                                         <constraint firstItem="0cC-jO-Wo7" firstAttribute="leading" secondItem="YDK-wM-A30" secondAttribute="trailing" constant="-14" id="rXx-9E-3xS"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="W5m-xz-MU5" secondAttribute="trailing" id="cRl-GC-X0o"/>
-                                                <constraint firstItem="W5m-xz-MU5" firstAttribute="leading" secondItem="gtp-4g-Ijg" secondAttribute="leading" id="qRF-gR-rta"/>
-                                                <constraint firstAttribute="bottom" secondItem="W5m-xz-MU5" secondAttribute="bottom" id="rxc-DG-rTF"/>
-                                                <constraint firstItem="W5m-xz-MU5" firstAttribute="top" secondItem="gtp-4g-Ijg" secondAttribute="top" id="tzW-Ng-Jh0"/>
+                                                <constraint firstItem="W5m-xz-MU5" firstAttribute="centerY" secondItem="gtp-4g-Ijg" secondAttribute="centerY" id="7rt-b5-bJ3"/>
+                                                <constraint firstItem="W5m-xz-MU5" firstAttribute="centerX" secondItem="gtp-4g-Ijg" secondAttribute="centerX" id="zew-ar-oQO"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <size key="customSize" width="384" height="107"/>
                                         <connections>
                                             <outlet property="addressLabel" destination="Yyg-Qp-zlm" id="MTf-hj-xWc"/>
@@ -2527,7 +2523,7 @@ adipiscing Elit</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="zNL-pp-jIB" firstAttribute="leading" secondItem="vjT-eD-bLi" secondAttribute="leading" id="001-QS-H5I"/>
-                            <constraint firstItem="qVP-Ud-td1" firstAttribute="top" secondItem="417-cU-Jmo" secondAttribute="bottom" constant="20" id="78p-GT-wY6"/>
+                            <constraint firstItem="qVP-Ud-td1" firstAttribute="top" secondItem="417-cU-Jmo" secondAttribute="bottom" id="78p-GT-wY6"/>
                             <constraint firstItem="vjT-eD-bLi" firstAttribute="trailing" secondItem="417-cU-Jmo" secondAttribute="trailing" constant="38" id="8d3-pm-3KV"/>
                             <constraint firstItem="zNL-pp-jIB" firstAttribute="leading" secondItem="vjT-eD-bLi" secondAttribute="leading" id="8rT-aR-vx6"/>
                             <constraint firstItem="Rsu-fZ-qHT" firstAttribute="top" secondItem="zNL-pp-jIB" secondAttribute="bottom" constant="8" symbolic="YES" id="AcF-hd-1Cg"/>
@@ -3201,7 +3197,7 @@ adipiscing Elit</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="VMN-rh-5X4"/>
-        <segue reference="N2t-1y-cVv"/>
+        <segue reference="bzA-hb-stl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class PaymentViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
 
     var stateController: StateController?
-    
+    //MARK: Coredata
+    var container: NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     override func viewDidLoad() {
         super.viewDidLoad()
         self.foodCollectionView.reloadData()
         // Do any additional setup after loading the view.
+        if let context = container?.viewContext {
+            if let persitentAddress = try? Address.retrieveAddresses(in: context)
+            {
+                persitentAddress.unique.forEach { [weak self] in
+                    if let name = $0.name {
+                        self?.stateController?.savedLocations.append(Location(name: name, latitude: $0.latitude, longitude: $0.longitude))
+                        
+                    }
+                }
+            }
+        }
     }
     
     //MARK: Address variables
@@ -86,13 +99,15 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
             locationCell.editImageView.tag = indexPath.row
             locationCell.editImageView.addGestureRecognizer(gesture)
         }
-        cell.layer.cornerRadius = 5.0
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.drawShadow(opacity: 0.8, color: UIColor.lightGray.cgColor)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == foodCollectionView {
+            print("width: \(collectionView.frame.width), height: \(collectionView.frame.height)")
+        }else if collectionView == addressCollectionView {
+            print("awidth: \(collectionView.frame.width), height: \(collectionView.frame.height)")
+        }
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
     
