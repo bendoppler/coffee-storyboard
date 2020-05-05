@@ -22,6 +22,7 @@ class CouponViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchCouponCodeView.layer.borderColor = UIColor.lightGray.cgColor
         searchCouponCodeView.layer.cornerRadius = 5.0
         saveCouponButton.layer.cornerRadius = 5.0
+        
     }
     
     @IBOutlet weak var couponCollectionView: UICollectionView! {
@@ -41,6 +42,14 @@ class CouponViewController: UIViewController, UICollectionViewDelegate, UICollec
         navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            if let tabBarVC = tabBarController as? TabBarViewController {
+                tabBarVC.customTabBar.isHidden = false
+            }
+        }
+    }
     //MARK: UICollectionView
     var coupons: [Coupon] = [
         Coupon(name: "Free drink", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", image: UIImage(named: "coupon_sample_image")!, from: Date(), date: Date(timeIntervalSinceNow: 86400 * 7), fullDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis ante eu lorem vulputate porta. Duis ante nibh, blandit vel neque non, interdum rutrum dui. Vestibulum a faucibus justo, a mattis augue. Morbi non metus feugiat, consectetur dolor nec, vehicula enim. Fusce eu felis sit amet arcu ornare faucibus sit amet ut massa."),
@@ -108,4 +117,5 @@ class CouponViewController: UIViewController, UICollectionViewDelegate, UICollec
         textField.resignFirstResponder()
         return true
     }
+    
 }

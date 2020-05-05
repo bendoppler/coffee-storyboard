@@ -74,7 +74,8 @@ class AddressViewController: UIViewController, UICollectionViewDelegate, UIColle
             if let mapVC = segue.destination.contents as? MapViewController {
                 mapVC.stateController = stateController
                 if let selectedIndex = selectedIndex {
-                    let selectedLocations = stateController?.savedLocations.unique.filter { $0.name == addresses[selectedIndex] }
+                    let selectedLocations = stateController?.savedLocations.unique.filter { $0.name == addresses[selectedIndex]
+                    }
                     if let selectedLocations = selectedLocations, selectedLocations.count > 0 {
                         mapVC.currentLocation = selectedLocations[0]
                     }
@@ -115,6 +116,8 @@ class AddressViewController: UIViewController, UICollectionViewDelegate, UIColle
             locationCell.deleteImageVIew.isUserInteractionEnabled = true
             locationCell.deleteImageVIew.tag = indexPath.row
             locationCell.deleteImageVIew.addGestureRecognizer(gesture2)
+            locationCell.infoView.layer.cornerRadius = 3.0
+            locationCell.infoView.drawShadow(opacity: 0.8, color: UIColor.lightGray.cgColor)
         }
         return cell
     }
