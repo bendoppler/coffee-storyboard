@@ -1,1 +1,4 @@
-./Pods
+#Cocoadpods
+/Pods
+#MACOS finder
+.DS_Store
