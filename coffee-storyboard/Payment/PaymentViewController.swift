@@ -186,6 +186,7 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     @IBAction func confrimOrder(_ sender: UIButton) {
+        stateController?.order.isOk = true
         self.navigationController?.popToRootViewController(animated: true)
     }
 }

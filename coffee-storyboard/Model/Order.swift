@@ -10,6 +10,7 @@ import Foundation
 
 struct Order {
     var foods: [OrderFood]
+    var isOk = false
     
     init(foods: [OrderFood]? = nil) {
         self.foods = foods ?? []

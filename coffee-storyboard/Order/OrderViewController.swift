@@ -15,16 +15,24 @@ class OrderViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var promotionButton: UIButton!
     @IBOutlet weak var timeDeliveryButton: UIButton!
+    
 
     var categories : [Category] = []
     var selectedIndex: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         categories = Utilities.loadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let stateController = stateController, stateController.order.isOk == true {
+            var popUpWindow: PopupWindow!
+            popUpWindow = PopupWindow(title: "Mã đơn hàng là 100001", text: "Nhân viên sẽ gọi và xác nhận đơn hàng trong giây lát. Bạn có thể theo dõi trạng thái đơn hàng qua mục 'Đơn hàng'.", buttonText: "Theo dõi đơn hàng")
+            self.present(popUpWindow, animated: true, completion: nil)
+            print("ok")
+        }
         addressButton.layer.cornerRadius = 5.0
         addressButton.layer.borderColor = UIColor.lightGray.cgColor
         promotionButton.layer.cornerRadius = 5.0

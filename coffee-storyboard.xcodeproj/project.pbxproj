@@ -13,6 +13,7 @@
 		5312A80123BB5554003DA9EC /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5312A80023BB5554003DA9EC /* StateController.swift */; };
 		53133BBA239D46BA00C3025A /* CouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53133BB9239D46BA00C3025A /* CouponCollectionViewCell.swift */; };
 		53133BBC239D4F3A00C3025A /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53133BBB239D4F3A00C3025A /* NewsCollectionViewCell.swift */; };
+		531562F7246D4FC10040B85B /* PopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531562F6246D4FC10040B85B /* PopupWindow.swift */; };
 		53190027237578E900C7C69F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53190026237578E900C7C69F /* User.swift */; };
 		531BB5E323DD2DA200275B97 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E223DD2DA200275B97 /* AddressCollectionViewCell.swift */; };
 		531BB5E523DD948D00275B97 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531BB5E423DD948D00275B97 /* Address.swift */; };
@@ -86,6 +87,7 @@
 		5312A80023BB5554003DA9EC /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		53133BB9239D46BA00C3025A /* CouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		53133BBB239D4F3A00C3025A /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		531562F6246D4FC10040B85B /* PopupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupWindow.swift; sourceTree = "<group>"; };
 		53190026237578E900C7C69F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		531BB5E223DD2DA200275B97 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		531BB5E423DD948D00275B97 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 				533319BB238FF309009A2EED /* TabItem.swift */,
 			);
 			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		531562F5246D4F920040B85B /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				531562F6246D4FC10040B85B /* PopupWindow.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		53190023237578A300C7C69F /* Persistent */ = {
@@ -346,6 +356,7 @@
 		538C117323740B9D0033F209 /* coffee-storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				531562F5246D4F920040B85B /* Popup */,
 				538C117D23740B9D0033F209 /* coffee_storyboard.xcdatamodeld */,
 				531900282375794700C7C69F /* Model */,
 				53190023237578A300C7C69F /* Persistent */,
@@ -558,6 +569,7 @@
 				537AAECE2385235700183CF7 /* HomeViewController.swift in Sources */,
 				533319C3238FF9EE009A2EED /* PienViewController.swift in Sources */,
 				531BB5EF23E13AA400275B97 /* Coupon.swift in Sources */,
+				531562F7246D4FC10040B85B /* PopupWindow.swift in Sources */,
 				538C117723740B9D0033F209 /* SceneDelegate.swift in Sources */,
 				533319BC238FF309009A2EED /* TabItem.swift in Sources */,
 				53E792EE23E5070300A020B6 /* Category.swift in Sources */,
