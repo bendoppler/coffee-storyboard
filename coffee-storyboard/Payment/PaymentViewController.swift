@@ -52,6 +52,11 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
             stateController?.update(savedAddress: locations)
         }
+        if let stateController = stateController {
+            priceLabel.text = stateController.order.totalPrice.convertToCurrency() + " vnđ"
+            totalPriceLabel.text = stateController.order.totalPrice.convertToCurrency() + " vnđ"
+        }
+        confirmButton.layer.cornerRadius = 5.0
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.showMapScreen(_:)))
         self.addAddressLabel.addGestureRecognizer(gesture)
         let gesture1 = UITapGestureRecognizer(target: self, action: #selector(self.showCouponScreen(_:)))
@@ -69,6 +74,8 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
             updateAddressCoreData(addresses: addresses)
         }
         if let stateController = stateController {
+            priceLabel.text = stateController.order.totalPrice.convertToCurrency() + " vnđ"
+            totalPriceLabel.text = stateController.order.totalPrice.convertToCurrency() + " vnđ"
             var tmp : [String] = []
             stateController.savedLocations.unique.forEach {
                 if $0.name != "" {
@@ -171,5 +178,14 @@ class PaymentViewController: UIViewController, UICollectionViewDelegate, UIColle
         selectedIndex = sender.view.tag
         UserDefaults.standard.set(addresses[sender.view.tag], forKey: "address")
         performSegue(withIdentifier: "Show Map", sender: self)
+    }
+    
+    //MARK: Price
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBAction func confrimOrder(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
